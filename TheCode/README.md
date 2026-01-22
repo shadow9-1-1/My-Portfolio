@@ -14,17 +14,19 @@ A modern portfolio template built with React, Vite, and Tailwind CSS featuring a
 ```
 src/
 ├── components/
-│   ├── Navbar.jsx         # Navigation with pill-style buttons
-│   ├── HeroSection.jsx    # Main hero with image and content
-│   ├── StatsCarousel.jsx  # Statistics with mountain charts
-│   ├── BentoGrid.jsx      # Bento-style category grid
-│   ├── FullWidthHero.jsx  # Full-width hero section
-│   ├── ScrollIndicator.jsx # Animated scroll indicator
-│   └── SocialIcons.jsx    # Social media icons
-├── App.jsx                # Main app component
-├── App.css                # Custom animations
-├── index.css              # Tailwind imports
-└── main.jsx               # Entry point
+│   ├── Navbar.jsx           # Navigation with pill-style buttons
+│   ├── HeroSection.jsx      # Main hero with image and content
+│   ├── StatsCarousel.jsx    # Statistics with mountain charts
+│   ├── BentoGrid.jsx        # Bento-style category grid
+│   ├── FullWidthHero.jsx    # Full-width hero section
+│   ├── ScrollIndicator.jsx  # Animated scroll indicator
+│   ├── TestimonialSection.jsx # Customer testimonials
+│   ├── Footer.jsx           # Footer with links and newsletter
+│   └── SocialIcons.jsx      # Social media icons
+├── App.jsx                  # Main app component
+├── App.css                  # Custom animations
+├── index.css                # Tailwind imports
+└── main.jsx                 # Entry point
 ```
 
 ## Getting Started
