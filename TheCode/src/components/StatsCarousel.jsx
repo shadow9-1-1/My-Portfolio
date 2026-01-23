@@ -6,35 +6,57 @@ const StatsCarousel = () => {
   ];
 
   return (
-    <section className="px-6 py-8">
-      <div className="flex items-center justify-center gap-4">
+    <section className="px-8 py-6 -mt-32 relative z-10">
+      <div className="flex items-end justify-start gap-6 ml-4">
         {/* Left Arrow */}
-        <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors">
-          <span className="text-slate-600">←</span>
+        <button className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition-colors mb-8">
+          <svg className="w-5 h-5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" />
+          </svg>
         </button>
 
         {/* Stats Cards */}
-        <div className="flex items-end gap-6">
+        <div className="flex items-end gap-12">
           {stats.map((stat, idx) => (
             <div
               key={idx}
               className={`text-center transition-all ${
-                stat.active ? 'opacity-100' : 'opacity-40'
+                stat.active ? 'opacity-100' : 'opacity-30'
               }`}
             >
-              {/* Mountain chart placeholder */}
-              <div className="w-32 h-20 mb-3 flex items-end justify-center">
+              {/* Mountain chart */}
+              <div className={`w-36 h-24 mb-4 flex items-end justify-center ${stat.active ? 'bg-white rounded-2xl shadow-sm p-4' : ''}`}>
                 <svg
-                  viewBox="0 0 100 50"
+                  viewBox="0 0 120 60"
                   className="w-full h-full"
                   fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
                 >
-                  <path d="M0,40 L15,35 L25,38 L40,20 L50,30 L65,15 L75,25 L85,10 L100,20" />
+                  {stat.active ? (
+                    <>
+                      {/* Filled mountain for active */}
+                      <path 
+                        d="M0,55 L20,45 L35,50 L50,25 L65,40 L80,20 L95,35 L110,15 L120,30 L120,60 L0,60 Z" 
+                        fill="currentColor" 
+                        className="text-slate-200"
+                      />
+                      <path 
+                        d="M0,55 L20,45 L35,50 L50,25 L65,40 L80,20 L95,35 L110,15 L120,30" 
+                        stroke="currentColor" 
+                        strokeWidth="2"
+                        className="text-slate-800"
+                      />
+                    </>
+                  ) : (
+                    <path 
+                      d="M0,50 L15,42 L25,46 L40,30 L55,38 L70,22 L85,32 L100,18 L115,28" 
+                      stroke="currentColor" 
+                      strokeWidth="1.5"
+                      className="text-slate-400"
+                    />
+                  )}
                 </svg>
               </div>
-              <p className={`text-2xl font-light ${stat.active ? 'text-black' : 'text-slate-400'}`}>
+              <p className={`text-3xl font-light tracking-tight ${stat.active ? 'text-black' : 'text-slate-400'}`}>
                 {stat.value}
               </p>
               <p className="text-xs text-slate-400 mt-1">{stat.label}</p>
@@ -43,8 +65,10 @@ const StatsCarousel = () => {
         </div>
 
         {/* Right Arrow */}
-        <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors">
-          <span className="text-slate-600">→</span>
+        <button className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition-colors mb-8 ml-4">
+          <svg className="w-5 h-5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" />
+          </svg>
         </button>
       </div>
     </section>

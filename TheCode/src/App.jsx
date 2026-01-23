@@ -5,7 +5,6 @@ import ProjectsSection from './components/ProjectsSection'
 import SkillsSection from './components/SkillsSection'
 import ExperienceSection from './components/ExperienceSection'
 import ContactSection from './components/ContactSection'
-import ScrollIndicator from './components/ScrollIndicator'
 import Footer from './components/Footer'
 
 function App() {
@@ -34,9 +33,6 @@ function App() {
 
       {/* Footer */}
       <Footer />
-
-      {/* Scroll Indicator */}
-      <ScrollIndicator />
     </div>
   )
 }
