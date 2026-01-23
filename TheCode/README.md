@@ -14,13 +14,14 @@ A modern portfolio template built with React, Vite, and Tailwind CSS featuring a
 ```
 src/
 ├── components/
-│   ├── Navbar.jsx           # Navigation with pill-style buttons
-│   ├── HeroSection.jsx      # Main hero with image and content
-│   ├── StatsCarousel.jsx    # Statistics with mountain charts
-│   ├── BentoGrid.jsx        # Bento-style category grid
-│   ├── FullWidthHero.jsx    # Full-width hero section
+│   ├── Navbar.jsx           # Sticky navigation with pill-style buttons
+│   ├── HeroSection.jsx      # Main hero with profile and intro
+│   ├── AboutSection.jsx     # About me with info cards (Bento grid)
+│   ├── ProjectsSection.jsx  # Featured projects gallery (Bento grid)
+│   ├── SkillsSection.jsx    # Skills & technologies with progress bars
+│   ├── ExperienceSection.jsx # Work timeline with achievements
+│   ├── ContactSection.jsx   # Contact form and info cards
 │   ├── ScrollIndicator.jsx  # Animated scroll indicator
-│   ├── TestimonialSection.jsx # Customer testimonials
 │   ├── Footer.jsx           # Footer with links and newsletter
 │   └── SocialIcons.jsx      # Social media icons
 ├── App.jsx                  # Main app component

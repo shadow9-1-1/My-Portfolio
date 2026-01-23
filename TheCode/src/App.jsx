@@ -1,10 +1,11 @@
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
-import StatsCarousel from './components/StatsCarousel'
-import BentoGrid from './components/BentoGrid'
-import FullWidthHero from './components/FullWidthHero'
+import AboutSection from './components/AboutSection'
+import ProjectsSection from './components/ProjectsSection'
+import SkillsSection from './components/SkillsSection'
+import ExperienceSection from './components/ExperienceSection'
+import ContactSection from './components/ContactSection'
 import ScrollIndicator from './components/ScrollIndicator'
-import TestimonialSection from './components/TestimonialSection'
 import Footer from './components/Footer'
 
 function App() {
@@ -14,18 +15,21 @@ function App() {
       <main className="max-w-7xl mx-auto">
         {/* Hero Section */}
         <HeroSection />
-        
-        {/* Stats Carousel */}
-        <StatsCarousel />
 
-        {/* Bento Grid Categories */}
-        <BentoGrid />
+        {/* About Me */}
+        <AboutSection />
 
-        {/* Full Width Hero */}
-        <FullWidthHero />
+        {/* Projects */}
+        <ProjectsSection />
 
-        {/* Testimonials */}
-        <TestimonialSection />
+        {/* Skills */}
+        <SkillsSection />
+
+        {/* Experience */}
+        <ExperienceSection />
+
+        {/* Contact */}
+        <ContactSection />
       </main>
 
       {/* Footer */}
