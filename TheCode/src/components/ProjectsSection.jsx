@@ -1,60 +1,128 @@
+import { useState } from 'react';
+import ProjectModal from './ProjectModal';
+
 const ProjectsSection = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const projects = [
     {
       title: 'E-Commerce Platform',
       description: 'A full-stack e-commerce solution with real-time inventory management and payment processing.',
+      fullDescription: 'A comprehensive e-commerce platform built from the ground up, featuring real-time inventory management, secure payment processing with Stripe, user authentication, and an intuitive admin dashboard. The platform supports multiple product categories, customer reviews, wishlist functionality, and advanced search with filters.',
       tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      image: null,
+      images: ['Homepage Screenshot', 'Product Page', 'Cart & Checkout', 'Admin Dashboard'],
+      features: [
+        'Real-time inventory tracking',
+        'Secure Stripe payment integration',
+        'User authentication & profiles',
+        'Admin dashboard with analytics',
+        'Product search & filtering',
+        'Responsive mobile design'
+      ],
       size: 'large',
       bgColor: 'bg-gradient-to-br from-violet-500 to-purple-600',
-      link: '#',
+      liveUrl: '#',
+      githubUrl: '#',
     },
     {
       title: 'Task Manager App',
       description: 'Collaborative task management with real-time updates.',
+      fullDescription: 'A powerful task management application designed for teams. Features include real-time collaboration, project boards, task assignments, due date tracking, and progress analytics. Built with performance in mind, supporting thousands of concurrent users.',
       tags: ['Next.js', 'Prisma', 'PostgreSQL'],
-      image: null,
+      images: ['Dashboard View', 'Project Board', 'Task Details'],
+      features: [
+        'Real-time collaboration',
+        'Drag-and-drop task boards',
+        'Team member assignments',
+        'Progress tracking & reports'
+      ],
       size: 'medium',
       bgColor: 'bg-gradient-to-br from-emerald-400 to-teal-500',
-      link: '#',
+      liveUrl: '#',
+      githubUrl: '#',
     },
     {
       title: 'Weather Dashboard',
       description: 'Beautiful weather visualization with 7-day forecasts.',
+      fullDescription: 'An elegant weather dashboard that provides accurate forecasts with beautiful visualizations. Features include interactive charts, location-based weather, hourly and 7-day forecasts, severe weather alerts, and customizable units.',
       tags: ['React', 'D3.js', 'API'],
-      image: null,
+      images: ['Main Dashboard', 'Forecast Charts', 'Weather Maps'],
+      features: [
+        'Location-based forecasts',
+        'Interactive D3.js charts',
+        '7-day detailed forecasts',
+        'Severe weather alerts'
+      ],
       size: 'medium',
       bgColor: 'bg-gradient-to-br from-sky-400 to-blue-500',
-      link: '#',
+      liveUrl: '#',
+      githubUrl: '#',
     },
     {
       title: 'AI Chat Assistant',
       description: 'Intelligent chatbot powered by machine learning for customer support automation.',
+      fullDescription: 'An advanced AI-powered chatbot designed for customer support automation. Utilizes natural language processing to understand and respond to customer queries, with the ability to escalate complex issues to human agents. Includes sentiment analysis and conversation analytics.',
       tags: ['Python', 'TensorFlow', 'FastAPI', 'React'],
-      image: null,
+      images: ['Chat Interface', 'Admin Panel', 'Analytics Dashboard', 'Training Console'],
+      features: [
+        'Natural language processing',
+        'Sentiment analysis',
+        'Human agent escalation',
+        'Conversation analytics',
+        'Custom training interface',
+        'Multi-language support'
+      ],
       size: 'wide',
       bgColor: 'bg-gradient-to-br from-amber-400 to-orange-500',
-      link: '#',
+      liveUrl: '#',
+      githubUrl: '#',
     },
     {
       title: 'Portfolio Builder',
       description: 'Drag-and-drop portfolio creator.',
+      fullDescription: 'A user-friendly portfolio builder that allows anyone to create stunning portfolios without coding. Features drag-and-drop editing, multiple templates, custom domains, and SEO optimization.',
       tags: ['Vue.js', 'Firebase'],
-      image: null,
+      images: ['Editor View', 'Template Gallery'],
+      features: [
+        'Drag-and-drop editor',
+        'Multiple templates',
+        'Custom domain support',
+        'SEO optimization'
+      ],
       size: 'small',
       bgColor: 'bg-gradient-to-br from-pink-400 to-rose-500',
-      link: '#',
+      liveUrl: '#',
+      githubUrl: '#',
     },
     {
       title: 'Analytics Tool',
       description: 'Real-time data visualization.',
+      fullDescription: 'A powerful analytics tool for visualizing business data in real-time. Features customizable dashboards, automated reports, data export, and integration with popular data sources.',
       tags: ['React', 'Chart.js'],
-      image: null,
+      images: ['Dashboard', 'Reports View'],
+      features: [
+        'Real-time data updates',
+        'Customizable widgets',
+        'Automated reports',
+        'Data export options'
+      ],
       size: 'small',
       bgColor: 'bg-gradient-to-br from-slate-700 to-slate-800',
-      link: '#',
+      liveUrl: '#',
+      githubUrl: '#',
     },
   ];
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
 
   const getSizeClasses = (size) => {
     switch (size) {
@@ -83,9 +151,9 @@ const ProjectsSection = () => {
 
       <div className="grid grid-cols-12 gap-4 auto-rows-[220px]">
         {projects.map((project, idx) => (
-          <a
+          <div
             key={idx}
-            href={project.link}
+            onClick={() => handleProjectClick(project)}
             className={`${getSizeClasses(project.size)} ${project.bgColor} rounded-3xl p-6 relative overflow-hidden group cursor-pointer transition-all hover:scale-[1.02] hover:shadow-xl`}
           >
             {/* Background pattern */}
@@ -131,7 +199,7 @@ const ProjectsSection = () => {
                 </div>
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
 
@@ -147,6 +215,13 @@ const ProjectsSection = () => {
           </svg>
         </a>
       </div>
+
+      {/* Project Modal */}
+      <ProjectModal 
+        project={selectedProject} 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} 
+      />
     </section>
   );
 };
