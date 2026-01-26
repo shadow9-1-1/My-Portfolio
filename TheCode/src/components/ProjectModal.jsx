@@ -1,24 +1,59 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-const ProjectModal = ({ project, isOpen, onClose }) => {
+const ProjectModal = ({ project, isOpen, onClose, originRect }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [animationState, setAnimationState] = useState('closed');
+  const modalRef = useRef(null);
+
+  // Handle open/close animations
+  useEffect(() => {
+    if (isOpen) {
+      setAnimationState('opening');
+      document.body.style.overflow = 'hidden';
+      // Trigger the grow animation after a brief delay
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setAnimationState('open');
+        });
+      });
+    } else {
+      setAnimationState('closed');
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   // Close on escape key
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') handleClose();
     };
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
     }
     return () => {
       document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
+
+  const handleClose = () => {
+    setAnimationState('closing');
+    setTimeout(() => {
+      onClose();
+      setAnimationState('closed');
+    }, 300);
+  };
 
   if (!isOpen || !project) return null;
+
+  // Calculate transform origin based on clicked card position
+  const getTransformOrigin = () => {
+    if (!originRect) return 'center center';
+    const x = originRect.left + originRect.width / 2;
+    const y = originRect.top + originRect.height / 2;
+    return `${x}px ${y}px`;
+  };
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => 
@@ -33,18 +68,35 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div 
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${
+        animationState === 'open' ? 'opacity-100' : animationState === 'opening' ? 'opacity-0' : 'opacity-0'
+      }`}
+      style={{ transformOrigin: getTransformOrigin() }}
+    >
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
+        className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+          animationState === 'open' ? 'opacity-100' : 'opacity-0'
+        }`}
+        onClick={handleClose}
       />
       
       {/* Modal */}
-      <div className="relative bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl animate-modal-enter">
+      <div 
+        ref={modalRef}
+        className={`relative bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl transition-all duration-300 ease-out ${
+          animationState === 'open' 
+            ? 'scale-100 opacity-100 translate-y-0' 
+            : animationState === 'closing'
+            ? 'scale-75 opacity-0 translate-y-4'
+            : 'scale-50 opacity-0 translate-y-8'
+        }`}
+        style={{ transformOrigin: getTransformOrigin() }}
+      >
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-lg transition-all"
         >
           <svg className="w-5 h-5 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -213,7 +265,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 </a>
               )}
               <button
-                onClick={onClose}
+                onClick={handleClose}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-slate-200 text-slate-600 text-sm font-medium hover:bg-slate-50 transition-colors ml-auto"
               >
                 Close

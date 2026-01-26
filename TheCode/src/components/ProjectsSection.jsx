@@ -4,6 +4,7 @@ import ProjectModal from './ProjectModal';
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [clickedCardRect, setClickedCardRect] = useState(null);
 
   const projects = [
     {
@@ -114,14 +115,19 @@ const ProjectsSection = () => {
     },
   ];
 
-  const handleProjectClick = (project) => {
+  const handleProjectClick = (e, project) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setClickedCardRect(rect);
     setSelectedProject(project);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setSelectedProject(null);
+    setTimeout(() => {
+      setSelectedProject(null);
+      setClickedCardRect(null);
+    }, 300);
   };
 
   const getSizeClasses = (size) => {
@@ -153,7 +159,7 @@ const ProjectsSection = () => {
         {projects.map((project, idx) => (
           <div
             key={idx}
-            onClick={() => handleProjectClick(project)}
+            onClick={(e) => handleProjectClick(e, project)}
             className={`${getSizeClasses(project.size)} ${project.bgColor} rounded-3xl p-6 relative overflow-hidden group cursor-pointer transition-all hover:scale-[1.02] hover:shadow-xl`}
           >
             {/* Background pattern */}
@@ -220,7 +226,8 @@ const ProjectsSection = () => {
       <ProjectModal 
         project={selectedProject} 
         isOpen={isModalOpen} 
-        onClose={handleCloseModal} 
+        onClose={handleCloseModal}
+        originRect={clickedCardRect}
       />
     </section>
   );

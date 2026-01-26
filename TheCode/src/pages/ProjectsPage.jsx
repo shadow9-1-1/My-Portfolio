@@ -5,6 +5,7 @@ import ProjectModal from '../components/ProjectModal'
 const ProjectsPage = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [clickedCardRect, setClickedCardRect] = useState(null);
 
   const moreProjects = [
     {
@@ -111,14 +112,19 @@ const ProjectsPage = () => {
     },
   ];
 
-  const handleProjectClick = (project) => {
+  const handleProjectClick = (e, project) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setClickedCardRect(rect);
     setSelectedProject(project);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setSelectedProject(null);
+    setTimeout(() => {
+      setSelectedProject(null);
+      setClickedCardRect(null);
+    }, 300);
   };
 
   return (
@@ -143,7 +149,7 @@ const ProjectsPage = () => {
           {moreProjects.map((project, idx) => (
             <div 
               key={idx}
-              onClick={() => handleProjectClick(project)}
+              onClick={(e) => handleProjectClick(e, project)}
               className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-all hover:scale-[1.02] cursor-pointer"
             >
               <div className={`aspect-video ${project.bgColor} rounded-2xl mb-4 flex items-center justify-center`}>
@@ -165,7 +171,8 @@ const ProjectsPage = () => {
       <ProjectModal 
         project={selectedProject} 
         isOpen={isModalOpen} 
-        onClose={handleCloseModal} 
+        onClose={handleCloseModal}
+        originRect={clickedCardRect}
       />
     </div>
   )
