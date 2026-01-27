@@ -1,4 +1,5 @@
 import SocialIcons from './SocialIcons';
+import { BlurText, BlurFade, SlideIn, ScaleIn } from './Animations';
 
 const ContactSection = () => {
   const contactMethods = [
@@ -45,15 +46,19 @@ const ContactSection = () => {
     <section id="contact" className="px-6 py-16">
       <div className="grid grid-cols-12 gap-8">
         {/* Left - Contact Form */}
-        <div className="col-span-12 lg:col-span-7">
+        <SlideIn direction="left" delay={0} duration={0.6} className="col-span-12 lg:col-span-7">
           <div className="bg-slate-900 rounded-3xl p-8 md:p-10">
-            <span className="text-xs text-slate-400 uppercase tracking-wide">Get in Touch</span>
+            <BlurFade delay={0.1}>
+              <span className="text-xs text-slate-400 uppercase tracking-wide">Get in Touch</span>
+            </BlurFade>
             <h2 className="text-3xl md:text-4xl font-light text-white mt-2 mb-2">
-              Let's work together
+              <BlurText text="Let's work together" delay={40} />
             </h2>
-            <p className="text-slate-400 text-sm mb-8">
-              Have a project in mind? I'd love to hear about it. Send me a message and let's create something amazing.
-            </p>
+            <BlurFade delay={0.2}>
+              <p className="text-slate-400 text-sm mb-8">
+                Have a project in mind? I'd love to hear about it. Send me a message and let's create something amazing.
+              </p>
+            </BlurFade>
 
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -104,52 +109,57 @@ const ContactSection = () => {
               </button>
             </form>
           </div>
-        </div>
+        </SlideIn>
 
         {/* Right - Contact Info */}
         <div className="col-span-12 lg:col-span-5 space-y-6">
           {/* Contact Methods */}
           {contactMethods.map((method, idx) => (
-            <a
-              key={idx}
-              href={method.link}
-              className="flex items-center gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all group"
-            >
-              <div className={`w-14 h-14 rounded-2xl ${method.bgColor} flex items-center justify-center ${method.iconColor}`}>
-                {method.icon}
-              </div>
-              <div className="flex-1">
-                <p className="text-sm text-slate-500">{method.title}</p>
-                <p className="font-medium text-slate-900 group-hover:text-slate-600 transition-colors">
-                  {method.value}
-                </p>
-              </div>
-              <svg className="w-5 h-5 text-slate-400 group-hover:text-slate-600 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+            <ScaleIn key={idx} delay={0.1 * idx} duration={0.5}>
+              <a
+                href={method.link}
+                className="flex items-center gap-4 bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all group"
+              >
+                <div className={`w-14 h-14 rounded-2xl ${method.bgColor} flex items-center justify-center ${method.iconColor}`}>
+                  {method.icon}
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm text-slate-500">{method.title}</p>
+                  <p className="font-medium text-slate-900 group-hover:text-slate-600 transition-colors">
+                    {method.value}
+                  </p>
+                </div>
+                <svg className="w-5 h-5 text-slate-400 group-hover:text-slate-600 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </ScaleIn>
           ))}
 
           {/* Social Card */}
-          <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl p-6">
-            <h3 className="text-xl font-semibold text-white mb-2">Follow Me</h3>
-            <p className="text-white/80 text-sm mb-4">
-              Connect with me on social media for updates and insights.
-            </p>
-            <SocialIcons className="[&_a]:bg-white/20 [&_a]:hover:bg-white/30 [&_a]:text-white" />
-          </div>
+          <BlurFade delay={0.3} duration={0.6}>
+            <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl p-6">
+              <h3 className="text-xl font-semibold text-white mb-2">Follow Me</h3>
+              <p className="text-white/80 text-sm mb-4">
+                Connect with me on social media for updates and insights.
+              </p>
+              <SocialIcons className="[&_a]:bg-white/20 [&_a]:hover:bg-white/30 [&_a]:text-white" />
+            </div>
+          </BlurFade>
 
           {/* Availability Card */}
-          <div className="bg-emerald-50 rounded-3xl p-6 border border-emerald-100">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-emerald-700 font-medium">Available for work</span>
+          <BlurFade delay={0.4} duration={0.6}>
+            <div className="bg-emerald-50 rounded-3xl p-6 border border-emerald-100">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-emerald-700 font-medium">Available for work</span>
+              </div>
+              <p className="text-slate-600 text-sm">
+                I'm currently open to freelance projects and full-time opportunities. 
+                Let's discuss how I can help bring your ideas to life.
+              </p>
             </div>
-            <p className="text-slate-600 text-sm">
-              I'm currently open to freelance projects and full-time opportunities. 
-              Let's discuss how I can help bring your ideas to life.
-            </p>
-          </div>
+          </BlurFade>
         </div>
       </div>
     </section>

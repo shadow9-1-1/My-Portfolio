@@ -1,3 +1,5 @@
+import { BlurText, BlurFade, ScaleIn } from './Animations';
+
 const BentoGrid = () => {
   const categories = [
     {
@@ -62,45 +64,55 @@ const BentoGrid = () => {
   return (
     <section className="px-6 py-12">
       <div className="mb-8">
-        <h2 className="text-3xl font-light mb-2">Explore Categories</h2>
-        <p className="text-slate-500 text-sm">Discover your next adventure</p>
+        <h2 className="text-3xl font-light mb-2">
+          <BlurText text="Explore Categories" delay={30} />
+        </h2>
+        <BlurFade delay={0.2}>
+          <p className="text-slate-500 text-sm">Discover your next adventure</p>
+        </BlurFade>
       </div>
 
       <div className="grid grid-cols-12 gap-4 auto-rows-[200px]">
         {categories.map((category, idx) => (
-          <div
+          <ScaleIn
             key={idx}
-            className={`${getSizeClasses(category.size)} ${category.bgColor} rounded-3xl p-6 relative overflow-hidden group cursor-pointer transition-transform hover:scale-[1.02]`}
+            delay={0.05 * idx}
+            duration={0.5}
+            className={getSizeClasses(category.size)}
           >
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-current" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-current" />
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 h-full flex flex-col justify-between">
-              <div>
-                <span className={`text-xs ${category.textColor} opacity-60 uppercase tracking-wide`}>
-                  Category
-                </span>
+            <div
+              className={`${category.bgColor} rounded-3xl p-6 relative overflow-hidden group cursor-pointer transition-transform hover:scale-[1.02] h-full`}
+            >
+              {/* Background pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-current" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-current" />
               </div>
 
-              <div>
-                <h3 className={`text-2xl font-semibold ${category.textColor} mb-1`}>
-                  {category.title}
-                </h3>
-                <p className={`text-sm ${category.textColor} opacity-70`}>
-                  {category.subtitle}
-                </p>
+              {/* Content */}
+              <div className="relative z-10 h-full flex flex-col justify-between">
+                <div>
+                  <span className={`text-xs ${category.textColor} opacity-60 uppercase tracking-wide`}>
+                    Category
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className={`text-2xl font-semibold ${category.textColor} mb-1`}>
+                    {category.title}
+                  </h3>
+                  <p className={`text-sm ${category.textColor} opacity-70`}>
+                    {category.subtitle}
+                  </p>
+                </div>
+              </div>
+
+              {/* Hover arrow */}
+              <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className={category.textColor}>→</span>
               </div>
             </div>
-
-            {/* Hover arrow */}
-            <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              <span className={category.textColor}>→</span>
-            </div>
-          </div>
+          </ScaleIn>
         ))}
       </div>
     </section>

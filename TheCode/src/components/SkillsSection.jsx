@@ -1,3 +1,5 @@
+import { BlurText, BlurFade, ScaleIn } from './Animations';
+
 const SkillsSection = () => {
   const skillCategories = [
     {
@@ -66,62 +68,69 @@ const SkillsSection = () => {
   return (
     <section id="skills" className="px-6 py-16">
       <div className="mb-10">
-        <span className="text-xs text-slate-500 uppercase tracking-wide">Expertise</span>
-        <h2 className="text-3xl md:text-4xl font-light mt-2">Skills & Technologies</h2>
-        <p className="text-slate-500 text-sm mt-2 max-w-md">
-          A diverse skill set built through years of hands-on experience and continuous learning.
-        </p>
+        <BlurFade delay={0} duration={0.5}>
+          <span className="text-xs text-slate-500 uppercase tracking-wide">Expertise</span>
+        </BlurFade>
+        <h2 className="text-3xl md:text-4xl font-light mt-2">
+          <BlurText text="Skills & Technologies" delay={30} />
+        </h2>
+        <BlurFade delay={0.2} duration={0.5}>
+          <p className="text-slate-500 text-sm mt-2 max-w-md">
+            A diverse skill set built through years of hands-on experience and continuous learning.
+          </p>
+        </BlurFade>
       </div>
 
       {/* Technical Skills */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {skillCategories.map((category, idx) => (
-          <div
-            key={idx}
-            className={`${category.bgColor} rounded-3xl p-6 hover:shadow-lg transition-shadow`}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-slate-700">
-                {category.icon}
-              </div>
-              <h3 className="text-xl font-semibold">{category.title}</h3>
-            </div>
-
-            <div className="space-y-4">
-              {category.skills.map((skill) => (
-                <div key={skill.name}>
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-sm font-medium text-slate-700">{skill.name}</span>
-                    <span className="text-xs text-slate-500">{skill.level}%</span>
-                  </div>
-                  <div className="h-2 bg-white rounded-full overflow-hidden">
-                    <div
-                      className={`h-full ${category.accentColor} rounded-full transition-all duration-500`}
-                      style={{ width: `${skill.level}%` }}
-                    />
-                  </div>
+          <ScaleIn key={idx} delay={0.1 * idx} duration={0.5}>
+            <div className={`${category.bgColor} rounded-3xl p-6 hover:shadow-lg transition-shadow h-full`}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-slate-700">
+                  {category.icon}
                 </div>
-              ))}
+                <h3 className="text-xl font-semibold">{category.title}</h3>
+              </div>
+
+              <div className="space-y-4">
+                {category.skills.map((skill) => (
+                  <div key={skill.name}>
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-sm font-medium text-slate-700">{skill.name}</span>
+                      <span className="text-xs text-slate-500">{skill.level}%</span>
+                    </div>
+                    <div className="h-2 bg-white rounded-full overflow-hidden">
+                      <div
+                        className={`h-full ${category.accentColor} rounded-full transition-all duration-500`}
+                        style={{ width: `${skill.level}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          </ScaleIn>
         ))}
       </div>
 
       {/* Soft Skills */}
-      <div className="bg-slate-900 rounded-3xl p-8">
-        <h3 className="text-xl font-semibold text-white mb-6">Soft Skills</h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {softSkills.map((skill, idx) => (
-            <div
-              key={idx}
-              className="bg-white/10 rounded-2xl p-4 text-center hover:bg-white/15 transition-colors"
-            >
-              <span className="text-2xl mb-2 block">{skill.icon}</span>
-              <span className="text-sm text-white">{skill.name}</span>
-            </div>
-          ))}
+      <BlurFade delay={0.4} duration={0.6}>
+        <div className="bg-slate-900 rounded-3xl p-8">
+          <h3 className="text-xl font-semibold text-white mb-6">Soft Skills</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {softSkills.map((skill, idx) => (
+              <div
+                key={idx}
+                className="bg-white/10 rounded-2xl p-4 text-center hover:bg-white/15 transition-colors"
+              >
+                <span className="text-2xl mb-2 block">{skill.icon}</span>
+                <span className="text-sm text-white">{skill.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </BlurFade>
     </section>
   );
 };

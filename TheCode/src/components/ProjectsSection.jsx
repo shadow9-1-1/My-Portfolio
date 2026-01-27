@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ProjectModal from './ProjectModal';
+import { BlurText, BlurFade, ScaleIn } from './Animations';
 
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -148,69 +149,81 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="px-6 py-16">
       <div className="mb-10">
-        <span className="text-xs text-slate-500 uppercase tracking-wide">Portfolio</span>
-        <h2 className="text-3xl md:text-4xl font-light mt-2">Featured Projects</h2>
-        <p className="text-slate-500 text-sm mt-2 max-w-md">
-          A collection of projects that showcase my skills and passion for building great products.
-        </p>
+        <BlurFade delay={0} duration={0.5}>
+          <span className="text-xs text-slate-500 uppercase tracking-wide">Portfolio</span>
+        </BlurFade>
+        <h2 className="text-3xl md:text-4xl font-light mt-2">
+          <BlurText text="Featured Projects" delay={30} />
+        </h2>
+        <BlurFade delay={0.2} duration={0.5}>
+          <p className="text-slate-500 text-sm mt-2 max-w-md">
+            A collection of projects that showcase my skills and passion for building great products.
+          </p>
+        </BlurFade>
       </div>
 
       <div className="grid grid-cols-12 gap-4 auto-rows-[220px]">
         {projects.map((project, idx) => (
-          <div
+          <ScaleIn 
             key={idx}
-            onClick={(e) => handleProjectClick(e, project)}
-            className={`${getSizeClasses(project.size)} ${project.bgColor} rounded-3xl p-6 relative overflow-hidden group cursor-pointer transition-all hover:scale-[1.02] hover:shadow-xl`}
+            delay={0.05 * idx}
+            duration={0.5}
+            className={getSizeClasses(project.size)}
           >
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-20">
-              <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full border-2 border-white/30" />
-              <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full border-2 border-white/30" />
-            </div>
+            <div
+              onClick={(e) => handleProjectClick(e, project)}
+              className={`${project.bgColor} rounded-3xl p-6 relative overflow-hidden group cursor-pointer transition-all hover:scale-[1.02] hover:shadow-xl h-full`}
+            >
+              {/* Background pattern */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full border-2 border-white/30" />
+                <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full border-2 border-white/30" />
+              </div>
 
-            {/* Content */}
-            <div className="relative z-10 h-full flex flex-col justify-between">
-              <div>
-                <div className="flex items-start justify-between">
-                  <span className="text-xs text-white/70 uppercase tracking-wide">Project</span>
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-0 translate-x-2">
-                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+              {/* Content */}
+              <div className="relative z-10 h-full flex flex-col justify-between">
+                <div>
+                  <div className="flex items-start justify-between">
+                    <span className="text-xs text-white/70 uppercase tracking-wide">Project</span>
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-0 translate-x-2">
+                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-white/80 mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-1 rounded-full bg-white/20 text-white text-xs"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    {project.tags.length > 3 && (
+                      <span className="px-2 py-1 rounded-full bg-white/20 text-white text-xs">
+                        +{project.tags.length - 3}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
-
-              <div>
-                <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-white/80 mb-4 line-clamp-2">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.slice(0, 3).map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-1 rounded-full bg-white/20 text-white text-xs"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                  {project.tags.length > 3 && (
-                    <span className="px-2 py-1 rounded-full bg-white/20 text-white text-xs">
-                      +{project.tags.length - 3}
-                    </span>
-                  )}
-                </div>
-              </div>
             </div>
-          </div>
+          </ScaleIn>
         ))}
       </div>
 
       {/* View All Button */}
-      <div className="text-center mt-10">
+      <BlurFade delay={0.4} duration={0.5} className="text-center mt-10">
         <a
           href="#"
           className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition-colors"
@@ -220,7 +233,7 @@ const ProjectsSection = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
-      </div>
+      </BlurFade>
 
       {/* Project Modal */}
       <ProjectModal 

@@ -1,4 +1,5 @@
 import SocialIcons from './SocialIcons';
+import { BlurFade, SlideIn } from './Animations';
 
 const Footer = () => {
   const footerLinks = {
@@ -12,18 +13,18 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-12 gap-8 mb-12">
           {/* Brand */}
-          <div className="col-span-12 md:col-span-4">
+          <SlideIn direction="bottom" delay={0} duration={0.5} className="col-span-12 md:col-span-4">
             <h3 className="text-2xl font-semibold mb-4">Cosmic Brand</h3>
             <p className="text-slate-400 text-sm mb-6 max-w-xs">
               Crafting timeless pieces for the modern explorer. Quality meets
               adventure in every detail.
             </p>
             <SocialIcons className="[&_a]:bg-slate-800 [&_a]:hover:bg-slate-700 [&_a]:text-white" />
-          </div>
+          </SlideIn>
 
           {/* Links */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title} className="col-span-6 md:col-span-2">
+          {Object.entries(footerLinks).map(([title, links], idx) => (
+            <BlurFade key={title} delay={0.1 * (idx + 1)} duration={0.5} className="col-span-6 md:col-span-2">
               <h4 className="font-medium mb-4">{title}</h4>
               <ul className="space-y-3">
                 {links.map((link) => (
@@ -37,11 +38,11 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </BlurFade>
           ))}
 
           {/* Newsletter */}
-          <div className="col-span-12 md:col-span-4">
+          <BlurFade delay={0.4} duration={0.5} className="col-span-12 md:col-span-4">
             <h4 className="font-medium mb-4">Stay Updated</h4>
             <p className="text-slate-400 text-sm mb-4">
               Subscribe to our newsletter for the latest updates.
@@ -56,23 +57,25 @@ const Footer = () => {
                 Subscribe
               </button>
             </div>
-          </div>
+          </BlurFade>
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-sm">
-            © 2026 Cosmic Brand. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-slate-500 text-sm hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-slate-500 text-sm hover:text-white transition-colors">
-              Terms of Service
-            </a>
+        <BlurFade delay={0.5} duration={0.5}>
+          <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-slate-500 text-sm">
+              © 2026 Cosmic Brand. All rights reserved.
+            </p>
+            <div className="flex gap-6">
+              <a href="#" className="text-slate-500 text-sm hover:text-white transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-slate-500 text-sm hover:text-white transition-colors">
+                Terms of Service
+              </a>
+            </div>
           </div>
-        </div>
+        </BlurFade>
       </div>
     </footer>
   );
