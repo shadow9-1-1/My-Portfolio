@@ -1,4 +1,4 @@
-import { BlurText, BlurFade, ScaleIn } from './Animations';
+import { BlurText, BlurFade, ScaleIn, MotionStagger } from './Animations';
 
 const SkillsSection = () => {
   const skillCategories = [

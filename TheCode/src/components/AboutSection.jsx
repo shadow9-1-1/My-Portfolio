@@ -1,5 +1,5 @@
 import SocialIcons from './SocialIcons';
-import { BlurText, BlurFade, SlideIn, ScaleIn, CountUp } from './Animations';
+import { BlurText, BlurFade, SlideIn, ScaleIn, Counter } from './Animations';
 
 const AboutSection = () => {
   return (
@@ -58,7 +58,7 @@ const AboutSection = () => {
                 </svg>
               </div>
               <h3 className="font-semibold text-lg mb-1">Experience</h3>
-              <p className="text-slate-500 text-sm"><CountUp end={5} duration={2} suffix="+ Years" /></p>
+              <p className="text-slate-500 text-sm"><Counter value={5} fontSize={14} suffix="+ Years" /></p>
             </div>
           </ScaleIn>
 

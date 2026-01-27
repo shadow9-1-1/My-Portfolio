@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ProjectModal from './ProjectModal';
-import { BlurText, BlurFade, ScaleIn } from './Animations';
+import { BlurText, BlurFade, ScaleIn, MotionScale } from './Animations';
 
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);

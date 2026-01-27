@@ -1,5 +1,5 @@
 import SocialIcons from './SocialIcons';
-import { BlurText, BlurFade, SlideIn } from './Animations';
+import { BlurText, BlurFade, SlideIn, MotionBlur } from './Animations';
 
 const HeroSection = () => {
   return (

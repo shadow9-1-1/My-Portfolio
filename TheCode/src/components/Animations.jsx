@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { motion, useSpring, useTransform, useInView, AnimatePresence } from 'framer-motion';
 
 /**
  * BlurText - Animates text with blur and fade effect (ReactBits style)
@@ -500,6 +501,246 @@ export const SlideDown = ({
   );
 };
 
+/**
+ * Counter - Animated rolling digit counter using framer-motion
+ */
+const CounterNumber = ({ mv, number, height }) => {
+  const y = useTransform(mv, latest => {
+    const placeValue = latest % 10;
+    const offset = (10 + number - placeValue) % 10;
+    let memo = offset * height;
+    if (offset > 5) {
+      memo -= 10 * height;
+    }
+    return memo;
+  });
+
+  return (
+    <motion.span 
+      style={{ 
+        y,
+        position: 'absolute',
+        inset: 0,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
+      {number}
+    </motion.span>
+  );
+};
+
+const CounterDigit = ({ place, value, height }) => {
+  const valueRoundedToPlace = Math.floor(value / place);
+  const animatedValue = useSpring(valueRoundedToPlace, {
+    stiffness: 100,
+    damping: 30
+  });
+
+  useEffect(() => {
+    animatedValue.set(valueRoundedToPlace);
+  }, [animatedValue, valueRoundedToPlace]);
+
+  return (
+    <span 
+      className="relative inline-flex overflow-hidden" 
+      style={{ 
+        height, 
+        width: '1ch',
+        fontVariantNumeric: 'tabular-nums'
+      }}
+    >
+      {Array.from({ length: 10 }, (_, i) => (
+        <CounterNumber key={i} mv={animatedValue} number={i} height={height} />
+      ))}
+    </span>
+  );
+};
+
+export const Counter = ({
+  value = 0,
+  fontSize = 36,
+  padding = 0,
+  gap = 2,
+  suffix = '',
+  prefix = '',
+  threshold = 0.1,
+  className = ''
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const height = fontSize + padding;
+  const safeValue = typeof value === 'number' ? value : 0;
+
+  const places = [...safeValue.toString()].map((_, i, a) => {
+    return 10 ** (a.length - i - 1);
+  });
+
+  return (
+    <span ref={ref} className={className} style={{ display: 'inline-flex', alignItems: 'center' }}>
+      {prefix}
+      <span style={{ fontSize, display: 'flex', gap, lineHeight: 1 }}>
+        {places.map((place, idx) => (
+          <CounterDigit 
+            key={idx} 
+            place={place} 
+            value={isInView ? safeValue : 0} 
+            height={height} 
+          />
+        ))}
+      </span>
+      {suffix}
+    </span>
+  );
+};
+
+/**
+ * MotionFadeIn - Framer Motion based fade in
+ */
+export const MotionFadeIn = ({ 
+  children, 
+  delay = 0,
+  duration = 0.5,
+  direction = 'up',
+  distance = 30,
+  className = ''
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  const getInitial = () => {
+    switch (direction) {
+      case 'up': return { opacity: 0, y: distance };
+      case 'down': return { opacity: 0, y: -distance };
+      case 'left': return { opacity: 0, x: distance };
+      case 'right': return { opacity: 0, x: -distance };
+      default: return { opacity: 0 };
+    }
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={getInitial()}
+      animate={isInView ? { opacity: 1, x: 0, y: 0 } : getInitial()}
+      transition={{ duration, delay, ease: [0.25, 0.4, 0.25, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+/**
+ * MotionScale - Framer Motion scale animation
+ */
+export const MotionScale = ({ 
+  children, 
+  delay = 0,
+  duration = 0.5,
+  initialScale = 0.8,
+  className = ''
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, scale: initialScale }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: initialScale }}
+      transition={{ duration, delay, ease: [0.25, 0.4, 0.25, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+/**
+ * MotionStagger - Staggered children animation
+ */
+export const MotionStagger = ({ 
+  children, 
+  staggerDelay = 0.1,
+  className = ''
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: staggerDelay
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: 'blur(0px)',
+      transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }
+    }
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
+      {Array.isArray(children) 
+        ? children.map((child, index) => (
+            <motion.div key={index} variants={itemVariants}>
+              {child}
+            </motion.div>
+          ))
+        : <motion.div variants={itemVariants}>{children}</motion.div>
+      }
+    </motion.div>
+  );
+};
+
+/**
+ * MotionBlur - Blur fade animation with framer-motion
+ */
+export const MotionBlur = ({ 
+  children, 
+  delay = 0,
+  duration = 0.6,
+  direction = 'up',
+  distance = 20,
+  className = ''
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  const getY = () => direction === 'up' ? distance : direction === 'down' ? -distance : 0;
+  const getX = () => direction === 'left' ? distance : direction === 'right' ? -distance : 0;
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y: getY(), x: getX(), filter: 'blur(10px)' }}
+      animate={isInView 
+        ? { opacity: 1, y: 0, x: 0, filter: 'blur(0px)' } 
+        : { opacity: 0, y: getY(), x: getX(), filter: 'blur(10px)' }
+      }
+      transition={{ duration, delay, ease: [0.25, 0.4, 0.25, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 export default {
   BlurText,
   FadeIn,
@@ -509,5 +750,10 @@ export default {
   SlideIn,
   RevealText,
   CountUp,
-  SlideDown
+  SlideDown,
+  Counter,
+  MotionFadeIn,
+  MotionScale,
+  MotionStagger,
+  MotionBlur
 };

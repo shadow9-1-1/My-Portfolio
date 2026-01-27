@@ -1,4 +1,4 @@
-import { BlurText, BlurFade, SlideIn, ScaleIn, CountUp } from './Animations';
+import { BlurText, BlurFade, SlideIn, ScaleIn, Counter, MotionBlur } from './Animations';
 
 const ExperienceSection = () => {
   const experiences = [
@@ -52,7 +52,7 @@ const ExperienceSection = () => {
                 <ScaleIn delay={0.3} duration={0.5}>
                   <div className="bg-slate-900 rounded-2xl p-4 text-center">
                     <p className="text-3xl font-light text-white">
-                      <CountUp end={5} duration={2} suffix="+" />
+                      <Counter value={5} fontSize={30} suffix="+" />
                     </p>
                     <p className="text-xs text-slate-400 mt-1">Years Experience</p>
                   </div>
@@ -60,7 +60,7 @@ const ExperienceSection = () => {
                 <ScaleIn delay={0.4} duration={0.5}>
                   <div className="bg-slate-900 rounded-2xl p-4 text-center">
                     <p className="text-3xl font-light text-white">
-                      <CountUp end={20} duration={2} suffix="+" />
+                      <Counter value={20} fontSize={30} suffix="+" />
                     </p>
                     <p className="text-xs text-slate-400 mt-1">Projects Completed</p>
                   </div>

@@ -1,5 +1,5 @@
 import SocialIcons from './SocialIcons';
-import { BlurText, BlurFade, SlideIn, ScaleIn } from './Animations';
+import { BlurText, BlurFade, SlideIn, ScaleIn, MotionBlur } from './Animations';
 
 const ContactSection = () => {
   const contactMethods = [
