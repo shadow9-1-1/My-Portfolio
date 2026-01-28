@@ -53,20 +53,16 @@ const HeroSection = () => {
 
         {/* Right Content - Hero Image */}
         <SlideIn direction="right" delay={0.2} duration={0.7} className="col-span-12 lg:col-span-7 relative">
-          <div className="relative rounded-[2rem] overflow-hidden bg-transparent aspect-[5/4] lg:aspect-[4/3]">
+          <div className="relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-transparent aspect-[5/4] lg:aspect-[4/3]">
             {/* Placeholder for hero image - teal/mint colored person */}
             <img className="absolute inset-0 w-full h-full " src="hero2.png" alt="Hero" />
-            {/* <div className="absolute inset-0 bg-gradient-to-b from-slate-300 via-teal-200 to-teal-300" />
-            <div className="absolute inset-0 flex items-center justify-center text-slate-500">
-              <span className="text-lg opacity-50">Hero Image</span>
-            </div> */}
 
             {/* Slide indicators - left side */}
-            <div className="absolute left-5 top-1/5 -translate-y-1/2 flex flex-col gap-5">
+            <div className="absolute left-2 sm:left-3 md:left-5 top-[15%] flex flex-col gap-2 sm:gap-3 md:gap-5">
               {['01', '02', '03'].map((num, idx) => (
                 <button
                   key={num}
-                  className={`w-11 h-11 rounded-full flex items-center justify-center text-xs font-medium transition-all ${
+                  className={`w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-medium transition-all ${
                     idx === 0
                       ? 'bg-white text-black shadow-lg'
                       : 'text-slate-400 hover:text-slate-600'
@@ -78,24 +74,24 @@ const HeroSection = () => {
             </div>
 
             {/* Social icons - right side */}
-            <div className="absolute right-5 top-1/4 flex flex-col gap-4">
+            <div className="absolute right-2 sm:right-3 md:right-5 top-[20%] flex flex-col gap-2 sm:gap-3 md:gap-4 scale-75 sm:scale-90 md:scale-100 origin-top-right">
               <SocialIcons vertical />
             </div>
           </div>
 
           {/* Info card - bottom right corner, outside hero image */}
-          <BlurFade delay={0.6} className="absolute -bottom-6 -right-4 z-10">
-            <div className="bg-black rounded-2xl p-1.5">
-              <div className="bg-white rounded-xl p-4 min-w-[180px]">
-                <div className="flex items-start justify-between gap-3">
+          <BlurFade delay={0.6} className="absolute -bottom-4 sm:-bottom-5 md:-bottom-6 -right-2 sm:-right-3 md:-right-4 z-10">
+            <div className="bg-black rounded-xl md:rounded-2xl p-1 md:p-1.5">
+              <div className="bg-white rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 min-w-[120px] sm:min-w-[150px] md:min-w-[180px]">
+                <div className="flex items-start justify-between gap-2 md:gap-3">
                   <div>
-                    <h3 className="text-xl font-semibold tracking-wide">EVEREST</h3>
-                    <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    <h3 className="text-sm sm:text-lg md:text-xl font-semibold tracking-wide">EVEREST</h3>
+                    <p className="text-[10px] sm:text-xs text-slate-500 mt-0.5 md:mt-1 leading-relaxed">
                       April 21, You can climb<br />today
                     </p>
                   </div>
-                  <button className="w-9 h-9 bg-black rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <button className="w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
                   </button>
