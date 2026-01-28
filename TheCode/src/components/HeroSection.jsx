@@ -1,7 +1,25 @@
+import { useState, useEffect } from 'react';
 import SocialIcons from './SocialIcons';
 import { BlurText, BlurFade, SlideIn, MotionBlur } from './Animations';
 
 const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const heroImages = [
+    'hero2.png',
+    'hero1.png',
+    'hero3.png',
+  ];
+
+  // Auto-switch slides every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   return (
     <section id="home" className="px-8 py-4">
       <div className="grid grid-cols-12 gap-8">
@@ -54,18 +72,30 @@ const HeroSection = () => {
         {/* Right Content - Hero Image */}
         <SlideIn direction="right" delay={0.2} duration={0.7} className="col-span-12 lg:col-span-7 relative">
           <div className="relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-transparent aspect-[5/4] lg:aspect-[4/3]">
-            {/* Placeholder for hero image - teal/mint colored person */}
-            <img className="absolute inset-0 w-full h-full " src="hero2.png" alt="Hero" />
+            {/* Hero images with transition */}
+            {heroImages.map((img, idx) => (
+              <img 
+                key={img}
+                className={`absolute inset-0 w-full h-full transition-all duration-700 ease-in-out ${
+                  idx === currentSlide 
+                    ? 'opacity-100 scale-100' 
+                    : 'opacity-0 scale-105'
+                }`}
+                src={img} 
+                alt={`Hero ${idx + 1}`} 
+              />
+            ))}
 
             {/* Slide indicators - left side */}
             <div className="absolute left-2 sm:left-3 md:left-5 top-[15%] flex flex-col gap-2 sm:gap-3 md:gap-5">
               {['01', '02', '03'].map((num, idx) => (
                 <button
                   key={num}
-                  className={`w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-medium transition-all ${
-                    idx === 0
-                      ? 'bg-white text-black shadow-lg'
-                      : 'text-slate-400 hover:text-slate-600'
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-medium transition-all duration-300 ${
+                    idx === currentSlide
+                      ? 'bg-white text-black shadow-lg scale-110'
+                      : 'text-slate-400 hover:text-slate-600 hover:bg-white/50'
                   }`}
                 >
                   {num}
