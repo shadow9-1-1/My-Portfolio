@@ -55,7 +55,7 @@ const HeroSection = () => {
         <SlideIn direction="right" delay={0.2} duration={0.7} className="col-span-12 lg:col-span-7 relative">
           <div className="relative rounded-[2rem] overflow-hidden bg-transparent aspect-[5/4] lg:aspect-[4/3]">
             {/* Placeholder for hero image - teal/mint colored person */}
-            <img className="absolute inset-0 w-full h-full " src="public/hero2.png" alt="Hero" />
+            <img className="absolute inset-0 w-full h-full " src="hero2.png" alt="Hero" />
             {/* <div className="absolute inset-0 bg-gradient-to-b from-slate-300 via-teal-200 to-teal-300" />
             <div className="absolute inset-0 flex items-center justify-center text-slate-500">
               <span className="text-lg opacity-50">Hero Image</span>
