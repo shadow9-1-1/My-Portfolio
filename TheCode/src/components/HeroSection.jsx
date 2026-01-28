@@ -53,15 +53,16 @@ const HeroSection = () => {
 
         {/* Right Content - Hero Image */}
         <SlideIn direction="right" delay={0.2} duration={0.7} className="col-span-12 lg:col-span-7 relative">
-          <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-slate-300 to-slate-400 aspect-[4/5] lg:aspect-[3/4]">
+          <div className="relative rounded-[2rem] overflow-hidden bg-transparent aspect-[5/4] lg:aspect-[4/3]">
             {/* Placeholder for hero image - teal/mint colored person */}
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-300 via-teal-200 to-teal-300" />
+            <img className="absolute inset-0 w-full h-full " src="public/hero2.png" alt="Hero" />
+            {/* <div className="absolute inset-0 bg-gradient-to-b from-slate-300 via-teal-200 to-teal-300" />
             <div className="absolute inset-0 flex items-center justify-center text-slate-500">
               <span className="text-lg opacity-50">Hero Image</span>
-            </div>
+            </div> */}
 
             {/* Slide indicators - left side */}
-            <div className="absolute left-5 top-1/2 -translate-y-1/2 flex flex-col gap-4">
+            <div className="absolute left-5 top-1/5 -translate-y-1/2 flex flex-col gap-5">
               {['01', '02', '03'].map((num, idx) => (
                 <button
                   key={num}
@@ -80,26 +81,28 @@ const HeroSection = () => {
             <div className="absolute right-5 top-1/4 flex flex-col gap-4">
               <SocialIcons vertical />
             </div>
+          </div>
 
-            {/* Info card - bottom right */}
-            <BlurFade delay={0.6} className="absolute bottom-6 right-6">
-              <div className="bg-white rounded-2xl p-5 shadow-xl min-w-[200px]">
-                <div className="flex items-start justify-between gap-4">
+          {/* Info card - bottom right corner, outside hero image */}
+          <BlurFade delay={0.6} className="absolute -bottom-6 -right-4 z-10">
+            <div className="bg-black rounded-2xl p-1.5">
+              <div className="bg-white rounded-xl p-4 min-w-[180px]">
+                <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-2xl font-semibold tracking-wide">EVEREST</h3>
+                    <h3 className="text-xl font-semibold tracking-wide">EVEREST</h3>
                     <p className="text-xs text-slate-500 mt-1 leading-relaxed">
                       April 21, You can climb<br />today
                     </p>
                   </div>
-                  <button className="w-10 h-10 bg-black rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <button className="w-9 h-9 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
                   </button>
                 </div>
               </div>
-            </BlurFade>
-          </div>
+            </div>
+          </BlurFade>
         </SlideIn>
       </div>
     </section>
