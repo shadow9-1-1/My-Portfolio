@@ -33,41 +33,39 @@ const ExperienceSection = () => {
       <div className="grid grid-cols-12 gap-8">
         {/* Left - Header */}
         <div className="col-span-12 md:col-span-4">
-          <SlideIn direction="left" delay={0} duration={0.6}>
-            <div className="sticky top-8">
-              <BlurFade delay={0.1}>
-                <span className="text-xs text-slate-500 uppercase tracking-wide">Journey</span>
-              </BlurFade>
-              <h2 className="text-3xl md:text-4xl font-light mt-2 mb-4">
-                <BlurText text="Work Experience" delay={30} />
-              </h2>
-              <BlurFade delay={0.2}>
-                <p className="text-slate-500 text-sm mb-6">
-                  A timeline of my professional growth and the companies I've had the pleasure to work with.
-                </p>
-              </BlurFade>
-              
-              {/* Stats */}
-              <div className="grid grid-cols-2 gap-4">
-                <ScaleIn delay={0.3} duration={0.5}>
-                  <div className="bg-slate-900 rounded-2xl p-4 text-center">
-                    <p className="text-3xl font-light text-white">
-                      <Counter value={5} fontSize={30} suffix="+" />
-                    </p>
-                    <p className="text-xs text-slate-400 mt-1">Years Experience</p>
-                  </div>
-                </ScaleIn>
-                <ScaleIn delay={0.4} duration={0.5}>
-                  <div className="bg-slate-900 rounded-2xl p-4 text-center">
-                    <p className="text-3xl font-light text-white">
-                      <Counter value={20} fontSize={30} suffix="+" />
-                    </p>
-                    <p className="text-xs text-slate-400 mt-1">Projects Completed</p>
-                  </div>
-                </ScaleIn>
-              </div>
+          <div className="md:sticky md:top-8">
+            <BlurFade delay={0.1}>
+              <span className="text-xs text-slate-500 uppercase tracking-wide">Journey</span>
+            </BlurFade>
+            <h2 className="text-3xl md:text-4xl font-light mt-2 mb-4">
+              <BlurText text="Work Experience" delay={30} />
+            </h2>
+            <BlurFade delay={0.2}>
+              <p className="text-slate-500 text-sm mb-6">
+                A timeline of my professional growth and the companies I've had the pleasure to work with.
+              </p>
+            </BlurFade>
+            
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-4">
+              <ScaleIn delay={0.3} duration={0.5}>
+                <div className="bg-slate-900 rounded-2xl p-4 text-center">
+                  <p className="text-3xl font-light text-white">
+                    <Counter value={5} fontSize={30} suffix="+" />
+                  </p>
+                  <p className="text-xs text-slate-400 mt-1">Years Experience</p>
+                </div>
+              </ScaleIn>
+              <ScaleIn delay={0.4} duration={0.5}>
+                <div className="bg-slate-900 rounded-2xl p-4 text-center">
+                  <p className="text-3xl font-light text-white">
+                    <Counter value={20} fontSize={30} suffix="+" />
+                  </p>
+                  <p className="text-xs text-slate-400 mt-1">Projects Completed</p>
+                </div>
+              </ScaleIn>
             </div>
-          </SlideIn>
+          </div>
         </div>
 
         {/* Right - Timeline */}

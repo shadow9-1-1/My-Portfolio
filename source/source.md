@@ -18,10 +18,10 @@
 
 
 the story page ( so let me tell you my story)
-my cv to the website 
+my cv data to the website 
 add that the user can download my cv
-fix the hero section and imgs
+- Done: fix the hero section and imgs
 fix the title and favicon
-fix Work Experience dont stay up
+- Done: fix Work Experience dont stay up
 img into the small hero img with animation of hi when hover on it 
-footer with (made with love by - site pages - social links)
+- Done: footer with (made with love by - site pages - social links)
