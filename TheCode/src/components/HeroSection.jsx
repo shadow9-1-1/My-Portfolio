@@ -4,12 +4,52 @@ import { BlurText, BlurFade, SlideIn, MotionBlur } from './Animations';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const roles = [
+    'Front-end Developer',
+    'Back-end Developer',
+    'Fullstack Developer',
+    'Mobile App Developer',
+    'UI/UX Designer',
+  ];
   
   const heroImages = [
     'hero2.png',
     'hero1.png',
     'hero3.png',
   ];
+
+  // Typing animation effect
+  useEffect(() => {
+    const currentRole = roles[currentRoleIndex];
+    const typingSpeed = isDeleting ? 50 : 100;
+    const pauseTime = 2000;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (displayText.length < currentRole.length) {
+          setDisplayText(currentRole.slice(0, displayText.length + 1));
+        } else {
+          // Pause before deleting
+          setTimeout(() => setIsDeleting(true), pauseTime);
+        }
+      } else {
+        // Deleting
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentRoleIndex, roles]);
 
   // Auto-switch slides every 5 seconds
   useEffect(() => {
@@ -26,36 +66,37 @@ const HeroSection = () => {
         {/* Left Content */}
         <div className="col-span-12 lg:col-span-5 flex flex-col justify-center pt-4">
           <BlurFade delay={0} duration={0.5}>
-            <span className="text-sm text-slate-500 mb-6 block">Cosmic brand</span>
+            <span className="text-sm text-slate-500 mb-6 block">👋 Hello there, I'm</span>
           </BlurFade>
           
           <h1 className="text-[3.5rem] lg:text-[4rem] font-light leading-[1.1] mb-8 tracking-tight">
             <BlurText 
-              text="Annatar" 
+              text="Ahmed&nbsp;Wael" 
               delay={40} 
               animateBy="letters"
               className="inline"
             />
+          
             {' '}
             <span className="inline-flex items-center justify-center w-28 h-14 bg-slate-700 rounded-full overflow-hidden mx-1 align-middle">
               {/* Mountain image placeholder */}
-              <svg viewBox="0 0 100 40" className="w-20 h-8 text-slate-400">
-                <path d="M0,35 L20,20 L35,28 L55,10 L70,22 L85,8 L100,25 L100,40 L0,40 Z" fill="currentColor" opacity="0.5"/>
-                <path d="M0,35 L20,25 L35,30 L55,15 L70,25 L85,12 L100,28" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-              </svg>
+              <img 
+                src="max.png" 
+                alt="Mountain"
+                className="w-full h-full object-cover"
+              />
             </span>{' '}
-            <BlurText text="forge" delay={40} animateBy="letters" className="inline" />
             <br />
-            <BlurText text="in secret elegant" delay={30} className="inline" />
-            <br />
-            <BlurText text="clothes" delay={40} animateBy="letters" className="inline" />
+            <span className="inline-flex items-center text-2xl sm:text-3xl md:text-4xl">
+              <span className="text-slate-900">{displayText}</span>
+              <span className="w-[2px] h-[1em] bg-slate-900 ml-1 animate-pulse"></span>
+            </span>
           </h1>
 
           <BlurFade delay={0.3} duration={0.6}>
             <p className="text-[10px] text-slate-500 uppercase tracking-wider leading-relaxed mb-8 max-w-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              pellentesque libero eget urna pellentesque hendrerit. Cras id
-              viverra orci, sed placerat ligula. Aenean mi leo.
+              I design intuitive user experiences and build scalable full-stack applications.
+              Bridging UI/UX design with powerful engineering to create digital products that are fast, functional, and user-centered.
             </p>
           </BlurFade>
 
@@ -115,9 +156,9 @@ const HeroSection = () => {
               <div className="bg-white rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 min-w-[120px] sm:min-w-[150px] md:min-w-[180px]">
                 <div className="flex items-start justify-between gap-2 md:gap-3">
                   <div>
-                    <h3 className="text-sm sm:text-lg md:text-xl font-semibold tracking-wide">EVEREST</h3>
+                    <h3 className="text-sm sm:text-lg md:text-xl font-semibold tracking-wide">My Story</h3>
                     <p className="text-[10px] sm:text-xs text-slate-500 mt-0.5 md:mt-1 leading-relaxed">
-                      April 21, You can climb<br />today
+                      Let me tell you my story
                     </p>
                   </div>
                   <button className="w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 bg-black rounded-full flex items-center justify-center flex-shrink-0">

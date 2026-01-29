@@ -25,3 +25,4 @@ fix the title and favicon
 - Done: fix Work Experience dont stay up
 img into the small hero img with animation of hi when hover on it 
 - Done: footer with (made with love by - site pages - social links)
+animation of text deleted and wreten (https://aakash-sharma.netlify.app/)
