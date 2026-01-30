@@ -80,15 +80,15 @@ const ExperienceSection = () => {
                 <BlurFade key={idx} delay={0.2 + idx * 0.15} duration={0.6} direction="up" distance={30}>
                   <div className="relative pl-8 md:pl-20">
                     {/* Timeline dot */}
-                    <div className={`absolute left-0 md:left-8 top-2 w-4 h-4 rounded-full -translate-x-1/2 ${
-                      exp.current ? 'bg-emerald-500 ring-4 ring-emerald-100' : 'bg-slate-300'
+                    <div className={`absolute left-0 md:left-8 top-2 w-4 h-4 rounded-full -translate-x-1/2 transition-all duration-300 ${
+                      exp.current ? 'bg-emerald-500 ring-4 ring-emerald-100 animate-pulse' : 'bg-slate-300'
                     }`} />
 
                     {/* Content card */}
-                    <div className={`rounded-3xl p-6 ${
+                    <div className={`rounded-3xl p-6 transition-all duration-300 cursor-pointer ${
                       exp.current 
-                        ? 'bg-gradient-to-br from-slate-900 to-slate-800 text-white' 
-                        : 'bg-white shadow-sm'
+                        ? 'bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1' 
+                        : 'bg-white shadow-sm hover:shadow-md hover:scale-[1.01] hover:-translate-y-0.5'
                     }`}>
                       <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                         <div>
@@ -99,11 +99,12 @@ const ExperienceSection = () => {
                             {exp.company}
                           </p>
                         </div>
-                        <span className={`px-3 py-1 rounded-full text-xs ${
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                           exp.current 
                             ? 'bg-emerald-500/20 text-emerald-300' 
                             : 'bg-slate-100 text-slate-600'
                         }`}>
+                          {exp.current && <span className="inline-block w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></span>}
                           {exp.period}
                         </span>
                       </div>
@@ -116,10 +117,10 @@ const ExperienceSection = () => {
                         {exp.achievements.map((achievement, i) => (
                           <span
                             key={i}
-                            className={`px-3 py-1 rounded-full text-xs ${
+                            className={`px-3 py-1 rounded-full text-xs transition-all duration-200 ${
                               exp.current 
-                                ? 'bg-white/10 text-white' 
-                                : 'bg-slate-100 text-slate-600'
+                                ? 'bg-white/10 text-white hover:bg-white/20' 
+                                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                             }`}
                           >
                             ✓ {achievement}
