@@ -15,17 +15,16 @@ const AboutSection = () => {
             <div className="relative z-10">
               {/* Avatar */}
               <div className="w-24 h-24 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 mb-6 flex items-center justify-center text-3xl font-bold text-white">
-                JD
+                AW
               </div>
 
               <span className="text-xs text-slate-400 uppercase tracking-wide">About Me</span>
               <h2 className="text-3xl md:text-4xl font-light text-white mt-2 mb-4">
-                <BlurText text="John Doe" delay={50} className="inline" />
+                <BlurText text="Ahmed Wael" delay={50} className="inline" />
               </h2>
               <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                Full-stack developer with 5+ years of experience crafting digital
-                experiences. Passionate about clean code, innovative solutions, and
-                creating products that make a difference.
+                Full-stack developer and UI/UX designer with 3+ years of experience building scalable, user-centered digital solutions.
+                I combine clean code, thoughtful design, and modern technologies to create efficient and impactful digital products.
               </p>
 
               <SocialIcons className="[&_a]:bg-white/10 [&_a]:hover:bg-white/20 [&_a]:text-white" />
@@ -45,7 +44,7 @@ const AboutSection = () => {
                 </svg>
               </div>
               <h3 className="font-semibold text-lg mb-1">Based in</h3>
-              <p className="text-slate-500 text-sm">San Francisco, CA</p>
+              <p className="text-slate-500 text-sm">Cairo, Egypt</p>
             </div>
           </ScaleIn>
 
@@ -58,7 +57,7 @@ const AboutSection = () => {
                 </svg>
               </div>
               <h3 className="font-semibold text-lg mb-1">Experience</h3>
-              <p className="text-slate-500 text-sm"><Counter value={5} fontSize={14} suffix="+ Years" /></p>
+              <p className="text-slate-500 text-sm"><Counter value={3} fontSize={14} suffix="+ Years" /></p>
             </div>
           </ScaleIn>
 
@@ -73,8 +72,8 @@ const AboutSection = () => {
                 </svg>
               </div>
               <h3 className="font-semibold text-lg mb-1">Education</h3>
-              <p className="text-slate-600 text-sm">BSc Computer Science</p>
-              <p className="text-slate-400 text-xs mt-1">Stanford University</p>
+              <p className="text-slate-600 text-sm">BSc in Software Development (CSAI)<br />Concentration in App Development</p>
+              <p className="text-slate-400 text-xs mt-1">Zewail City University</p>
             </div>
           </ScaleIn>
 
@@ -87,7 +86,7 @@ const AboutSection = () => {
                 </svg>
               </div>
               <h3 className="font-semibold text-lg mb-1">Languages</h3>
-              <p className="text-slate-600 text-sm">English, Spanish</p>
+              <p className="text-slate-600 text-sm">English, Arabic</p>
             </div>
           </ScaleIn>
 
@@ -99,9 +98,10 @@ const AboutSection = () => {
                 I specialize in building modern web applications using React, Node.js, and cloud technologies. 
                 When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
                 or sharing knowledge through technical writing and mentoring.
+                
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
-                {['React', 'Node.js', 'TypeScript', 'AWS', 'UI/UX'].map((tag) => (
+                {['React', 'Node.js', 'JavaScript', 'AWS', 'UI/UX', 'CSS', 'Flask'].map((tag) => (
                   <span key={tag} className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs">
                     {tag}
                   </span>
