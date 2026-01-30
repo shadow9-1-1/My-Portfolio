@@ -95,9 +95,8 @@ const AboutSection = () => {
             <div className="bg-white rounded-3xl p-6 shadow-sm">
               <h3 className="font-semibold text-lg mb-3">What I Do</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                I specialize in building modern web applications using React, Node.js, and cloud technologies. 
-                When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
-                or sharing knowledge through technical writing and mentoring.
+                I specialize in building modern web applications using React, Flask, Node.js, and cloud technologies, 
+                bridging UI/UX design with backend engineering to create fast, scalable, and user-centered products.
                 
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
