@@ -28,7 +28,7 @@ const ContactPage = () => {
               </svg>
             </div>
             <h3 className="font-semibold text-slate-800 mb-2">Location</h3>
-            <p className="text-slate-600">San Francisco, CA</p>
+            <p className="text-slate-600">Cairo, Egypt</p>
             <p className="text-slate-500 text-sm">Available for remote work</p>
           </div>
 
@@ -40,7 +40,7 @@ const ContactPage = () => {
               </svg>
             </div>
             <h3 className="font-semibold text-slate-800 mb-2">Email</h3>
-            <p className="text-slate-600">hello@example.com</p>
+            <p className="text-slate-600">ahmedoficial22@gmail.com</p>
             <p className="text-slate-500 text-sm">Response within 24 hours</p>
           </div>
 
@@ -52,8 +52,8 @@ const ContactPage = () => {
               </svg>
             </div>
             <h3 className="font-semibold text-slate-800 mb-2">Availability</h3>
-            <p className="text-slate-600">Mon - Fri, 9AM - 6PM</p>
-            <p className="text-slate-500 text-sm">Pacific Time (PT)</p>
+            <p className="text-slate-600">Sun - Thu, 9AM - 6PM</p>
+            <p className="text-slate-500 text-sm">Cairo Time (EET)</p>
           </div>
         </div>
       </div>
