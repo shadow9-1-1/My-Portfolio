@@ -4,26 +4,19 @@ const ExperienceSection = () => {
   const experiences = [
     {
       role: 'Senior Frontend Developer',
-      company: 'Tech Innovators Inc.',
-      period: '2022 - Present',
-      description: 'Leading the frontend team in building scalable web applications. Implemented micro-frontend architecture reducing load times by 40%.',
-      achievements: ['Led team of 5 developers', 'Reduced load time by 40%', 'Implemented CI/CD pipeline'],
-      current: true,
-    },
-    {
-      role: 'Full Stack Developer',
-      company: 'Digital Solutions Co.',
-      period: '2020 - 2022',
-      description: 'Developed and maintained multiple client projects using React and Node.js. Introduced automated testing practices.',
-      achievements: ['Built 15+ client projects', '98% client satisfaction', 'Mentored junior developers'],
+      company: 'ASCC Inc. - Project Based',
+      period: 'Jul 2025 – Aug 2025',
+      description: 'Developed and deployed a scalable multi-language corporate website using Flask, delivering a complete full-stack solution from UI design to backend architecture.',
+      achievements: ['Developed multi-language web platform', 'Created admin dashboard for content management', 
+        'Implemented responsive UI and database integration', 'Delivered scalable full-stack solution'],
       current: false,
     },
     {
-      role: 'Junior Developer',
-      company: 'StartUp Labs',
-      period: '2019 - 2020',
-      description: 'Started my professional journey building MVPs for early-stage startups. Learned rapid prototyping and agile methodologies.',
-      achievements: ['Shipped 3 MVPs', 'Full-stack development', 'Agile/Scrum certified'],
+      role: 'Internship - AI',
+      company: 'CIB Egypt - Corporate Internship Program',
+      period: 'Aug 2025 – Sep 2025',
+      description: 'Participated in an intensive internship program focused on banking, innovation, and sustainability through guided learning and mentorship.',
+      achievements: ['Completed technical and business courses', 'Participated in mentor-led sessions', 'Earned a SAS digital badge in AI'],
       current: false,
     },
   ];
@@ -51,7 +44,7 @@ const ExperienceSection = () => {
               <ScaleIn delay={0.3} duration={0.5}>
                 <div className="bg-slate-900 rounded-2xl p-4 text-center">
                   <p className="text-3xl font-light text-white">
-                    <Counter value={5} fontSize={30} suffix="+" />
+                    <Counter value={3} fontSize={30} suffix="+" />
                   </p>
                   <p className="text-xs text-slate-400 mt-1">Years Experience</p>
                 </div>
@@ -59,7 +52,7 @@ const ExperienceSection = () => {
               <ScaleIn delay={0.4} duration={0.5}>
                 <div className="bg-slate-900 rounded-2xl p-4 text-center">
                   <p className="text-3xl font-light text-white">
-                    <Counter value={20} fontSize={30} suffix="+" />
+                    <Counter value={15} fontSize={30} suffix="+" />
                   </p>
                   <p className="text-xs text-slate-400 mt-1">Projects Completed</p>
                 </div>
