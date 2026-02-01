@@ -111,7 +111,8 @@ const IntroAnimation = ({ onComplete }) => {
         {/* Logo/Icon */}
         <div ref={logoRef} className="mb-6">
           <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center">
-            <span className="text-3xl font-bold text-slate-900">P</span>
+            {/* <span className="text-3xl font-bold text-slate-900">P</span> */}
+            <img src="Shadow.jpg" alt="Logo" className="object-cover w-20 h-20" />
           </div>
         </div>
 
