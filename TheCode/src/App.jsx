@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import IntroAnimation from './components/IntroAnimation'
-import { HomePage, AboutPage, ProjectsPage, ContactPage } from './pages'
+import { HomePage, AboutPage, ProjectsPage, ContactPage, ErrorPage } from './pages'
 
 function App() {
   const [showIntro, setShowIntro] = useState(false);
@@ -39,6 +39,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </main>
         <Footer />
