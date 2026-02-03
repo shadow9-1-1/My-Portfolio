@@ -26,6 +26,7 @@ const Footer = () => {
                 <Link
                   key={page.name}
                   to={page.path}
+                  onClick={() => window.scrollTo(0, 0)}
                   className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
                 >
                   {page.name}
