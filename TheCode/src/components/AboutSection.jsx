@@ -95,12 +95,12 @@ const AboutSection = () => {
             <div className="bg-white rounded-3xl p-6 shadow-sm transition-all duration-300 cursor-pointer hover:shadow-md hover:scale-[1.01] hover:-translate-y-0.5">
               <h3 className="font-semibold text-lg mb-3">What I Do</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                I specialize in building modern web applications using React, Flask, Node.js, and cloud technologies, 
+                Crazy full stack developer who wants to explore every tech stack. I specialize in building modern web applications using React, Flask, Node.js, and cloud technologies, 
                 bridging UI/UX design with backend engineering to create fast, scalable, and user-centered products.
                 
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
-                {['React', 'Node.js', 'JavaScript', 'AWS', 'UI/UX', 'CSS', 'Flask'].map((tag) => (
+                {['HTML5','CSS3', 'React', 'Node.js', 'JavaScript', 'Flask','AWS', 'UI/UX', 'Python','SQL', 'Docker'].map((tag) => (
                   <span key={tag} className="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs">
                     {tag}
                   </span>
