@@ -4,6 +4,7 @@ import ProjectsSection from '../components/ProjectsSection'
 import SkillsSection from '../components/SkillsSection'
 import ExperienceSection from '../components/ExperienceSection'
 import ContactSection from '../components/ContactSection'
+import TestimonialSection from '../components/TestimonialSection'
 
 const HomePage = () => {
   return (
@@ -25,6 +26,9 @@ const HomePage = () => {
 
       {/* Contact */}
       <ContactSection />
+
+      {/* Testimonials */}
+      {/* <TestimonialSection /> */}
     </>
   )
 }
