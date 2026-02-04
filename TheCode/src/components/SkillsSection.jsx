@@ -1,73 +1,63 @@
-import { BlurText, BlurFade, ScaleIn, MotionStagger } from './Animations';
+import { useState } from 'react';
+import { BlurText, BlurFade, ScaleIn } from './Animations';
 
 const SkillsSection = () => {
+  const [hoveredSkill, setHoveredSkill] = useState(null);
+
   const skillCategories = [
     {
+      title: 'Programming Languages',
+      skills: ['Python', 'JavaScript', 'C#', 'C++', 'C', 'SQL', 'Assembly'],
+    },
+    {
       title: 'Frontend',
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-      skills: [
-        { name: 'React', level: 95 },
-        { name: 'TypeScript', level: 90 },
-        { name: 'Next.js', level: 88 },
-        { name: 'Tailwind CSS', level: 92 },
-        { name: 'Vue.js', level: 75 },
-      ],
-      bgColor: 'bg-gradient-to-br from-blue-50 to-indigo-100',
-      accentColor: 'bg-blue-500',
+      skills: ['React.js', 'React Native', 'HTML5', 'CSS', 'Tailwind CSS', 'DOM'],
     },
     {
-      title: 'Backend',
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-        </svg>
-      ),
-      skills: [
-        { name: 'Node.js', level: 92 },
-        { name: 'Python', level: 85 },
-        { name: 'PostgreSQL', level: 88 },
-        { name: 'MongoDB', level: 82 },
-        { name: 'GraphQL', level: 78 },
-      ],
-      bgColor: 'bg-gradient-to-br from-emerald-50 to-teal-100',
-      accentColor: 'bg-emerald-500',
+      title: 'Backend & Frameworks',
+      skills: ['Flask', 'ASP.NET', '.NET Framework', 'ASP.NET Razor'],
     },
     {
-      title: 'Tools & DevOps',
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
-      skills: [
-        { name: 'Git', level: 95 },
-        { name: 'Docker', level: 85 },
-        { name: 'AWS', level: 80 },
-        { name: 'CI/CD', level: 82 },
-        { name: 'Linux', level: 78 },
-      ],
-      bgColor: 'bg-gradient-to-br from-amber-50 to-orange-100',
-      accentColor: 'bg-amber-500',
+      title: 'Databases',
+      skills: ['Microsoft SQL Server', 'Databases'],
     },
-  ];
-
-  const softSkills = [
-    { name: 'Problem Solving', icon: '🧩' },
-    { name: 'Communication', icon: '💬' },
-    { name: 'Team Leadership', icon: '👥' },
-    { name: 'Agile/Scrum', icon: '🔄' },
-    { name: 'Code Review', icon: '👁️' },
-    { name: 'Mentoring', icon: '🎓' },
+    {
+      title: 'DevOps & Tools',
+      skills: ['Docker', 'Git', 'GitHub', 'AWS', 'VMware', 'Linux', 'Kali Linux'],
+    },
+    {
+      title: 'AI & Data',
+      skills: ['Machine Learning', 'Artificial Intelligence', 'Kaggle'],
+    },
+    {
+      title: 'Hardware & Systems',
+      skills: ['Arduino', 'Embedded Systems', 'Computer Architecture', 'Digital Logic', 'Operating Systems', 'Computer Networking'],
+    },
+    {
+      title: 'Software Engineering',
+      skills: ['Full-Stack Development', 'Front-End Development', 'Back-End Development', 'Web Development', 'Web Design', 'Software Testing', 'Software Deployment'],
+    },
+    {
+      title: 'CS Fundamentals',
+      skills: ['Data Structures', 'Algorithms', 'OOP', 'OOAD'],
+    },
+    {
+      title: 'UX/UI',
+      skills: ['User Experience (UX)', 'User Interface Design'],
+    },
+    {
+      title: 'Project Management',
+      skills: ['Agile Methodologies', 'Scrum', 'Waterfall', 'Project Management'],
+    },
+    {
+      title: 'Documentation',
+      skills: ['Software Requirements', 'Class Diagrams', 'Use Case Diagrams', 'User Stories'],
+    },
   ];
 
   return (
     <section id="skills" className="px-6 py-16">
-      <div className="mb-10">
+      <div className="mb-12">
         <BlurFade delay={0} duration={0.5}>
           <span className="text-xs text-slate-500 uppercase tracking-wide">Expertise</span>
         </BlurFade>
@@ -81,54 +71,59 @@ const SkillsSection = () => {
         </BlurFade>
       </div>
 
-      {/* Technical Skills */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {skillCategories.map((category, idx) => (
-          <ScaleIn key={idx} delay={0.1 * idx} duration={0.5}>
-            <div className={`${category.bgColor} rounded-3xl p-6 hover:shadow-lg transition-shadow h-full`}>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-slate-700">
-                  {category.icon}
-                </div>
-                <h3 className="text-xl font-semibold">{category.title}</h3>
+      {/* Skills by Category - Minimal Monochrome Design */}
+      <div className="space-y-8">
+        {skillCategories.map((category, categoryIdx) => (
+          <BlurFade key={categoryIdx} delay={0.1 * categoryIdx} duration={0.5}>
+            <div className="group">
+              {/* Category Title */}
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-sm font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+                  {category.title}
+                </h3>
+                <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
               </div>
-
-              <div className="space-y-4">
-                {category.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-sm font-medium text-slate-700">{skill.name}</span>
-                      <span className="text-xs text-slate-500">{skill.level}%</span>
+              
+              {/* Skills */}
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill, skillIdx) => (
+                  <ScaleIn key={skillIdx} delay={0.02 * skillIdx} duration={0.3}>
+                    <div
+                      className="relative"
+                      onMouseEnter={() => setHoveredSkill(skill)}
+                      onMouseLeave={() => setHoveredSkill(null)}
+                    >
+                      <div className={`
+                        px-4 py-2 rounded-full border border-slate-200 dark:border-slate-700
+                        bg-white dark:bg-slate-900
+                        transition-all duration-300 ease-out cursor-default
+                        hover:border-slate-400 dark:hover:border-slate-500
+                        hover:shadow-md hover:-translate-y-0.5
+                        ${hoveredSkill === skill ? 'border-slate-900 dark:border-white' : ''}
+                      `}>
+                        <span className={`
+                          text-sm transition-colors duration-300
+                          text-slate-600 dark:text-slate-400
+                          ${hoveredSkill === skill ? 'text-slate-900 dark:text-white' : ''}
+                        `}>
+                          {skill}
+                        </span>
+                      </div>
                     </div>
-                    <div className="h-2 bg-white rounded-full overflow-hidden">
-                      <div
-                        className={`h-full ${category.accentColor} rounded-full transition-all duration-500`}
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
+                  </ScaleIn>
                 ))}
               </div>
             </div>
-          </ScaleIn>
+          </BlurFade>
         ))}
       </div>
 
-      {/* Soft Skills */}
-      <BlurFade delay={0.4} duration={0.6}>
-        <div className="bg-slate-900 rounded-3xl p-8">
-          <h3 className="text-xl font-semibold text-white mb-6">Soft Skills</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {softSkills.map((skill, idx) => (
-              <div
-                key={idx}
-                className="bg-white/10 rounded-2xl p-4 text-center hover:bg-white/15 transition-colors"
-              >
-                <span className="text-2xl mb-2 block">{skill.icon}</span>
-                <span className="text-sm text-white">{skill.name}</span>
-              </div>
-            ))}
-          </div>
+      {/* Decorative line */}
+      <BlurFade delay={0.5} duration={0.6}>
+        <div className="mt-12 flex items-center gap-4">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent" />
+          <span className="text-xs text-slate-400 dark:text-slate-600 uppercase tracking-widest">Always Learning</span>
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent" />
         </div>
       </BlurFade>
     </section>
