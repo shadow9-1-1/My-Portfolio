@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import SocialIcons from './SocialIcons';
+import CVModal from './CVModal';
 import { BlurText, BlurFade, SlideIn, MotionBlur } from './Animations';
 
 const HeroSection = () => {
@@ -7,13 +8,15 @@ const HeroSection = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   
   const roles = [
-    'Front-end Developer',
-    'Back-end Developer',
-    'Fullstack Developer',
+    'Software Developer',
     'Mobile App Developer',
+    'Fullstack Developer',
     'UI/UX Designer',
+    'Back-end Developer',
+    'Front-end Developer',
   ];
   
   const heroImages = [
@@ -101,16 +104,15 @@ const HeroSection = () => {
           </BlurFade>
 
           <BlurFade delay={0.4} duration={0.5}>
-            <a
-              href="/Ahmed_Wael_CV.pdf"
-              download="Ahmed_Wael_CV.pdf"
+            <button
+              onClick={() => setIsCVModalOpen(true)}
               className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-full text-sm font-medium hover:bg-slate-700 transition-all duration-300 hover:scale-105 hover:shadow-lg w-fit"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               Download CV
-            </a>
+            </button>
           </BlurFade>
         </div>
 
@@ -176,6 +178,9 @@ const HeroSection = () => {
           </BlurFade>
         </SlideIn>
       </div>
+
+      {/* CV Modal */}
+      <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
     </section>
   );
 };

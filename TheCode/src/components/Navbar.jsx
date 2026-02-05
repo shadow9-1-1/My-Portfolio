@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import CVModal from './CVModal';
 import { SlideDown } from './Animations';
 
 const Navbar = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
@@ -76,16 +78,15 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <a
-              href="/Ahmed_Wael_CV.pdf"
-              download
+            <button
+              onClick={() => setIsCVModalOpen(true)}
               className="px-6 py-2.5 rounded-full text-sm font-medium transition-all text-slate-600 hover:bg-slate-100 flex items-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               CV
-            </a>
+            </button>
           </div>
 
           {/* Right CTA */}
@@ -125,10 +126,11 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
-          <a
-            href="/Ahmed_Wael_CV.pdf"
-            download
-            onClick={() => setIsMenuOpen(false)}
+          <button
+            onClick={() => {
+              setIsCVModalOpen(true);
+              setIsMenuOpen(false);
+            }}
             className="px-6 py-3 rounded-xl text-base font-medium transition-all duration-300 text-slate-600 hover:bg-slate-100 flex items-center gap-2"
             style={{
               transitionDelay: isMenuOpen ? `${navItems.length * 50}ms` : '0ms',
@@ -140,9 +142,12 @@ const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             Download CV
-          </a>
+          </button>
         </div>
       </div>
+
+      {/* CV Modal */}
+      <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
     </div>
   );
 };
