@@ -1,6 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const CVModal = ({ isOpen, onClose }) => {
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
+
+  // Handle opening and closing animations
+  useEffect(() => {
+    if (isOpen) {
+      setShouldRender(true);
+      // Small delay to ensure DOM is ready before animation
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsAnimating(true);
+        });
+      });
+      document.body.style.overflow = 'hidden';
+    } else {
+      setIsAnimating(false);
+      // Wait for closing animation to complete before unmounting
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+        document.body.style.overflow = 'unset';
+      }, 400); // Match the animation duration
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
   // Close on Escape key
   useEffect(() => {
     const handleEscape = (e) => {
@@ -9,16 +35,14 @@ const CVModal = ({ isOpen, onClose }) => {
     
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
     
     return () => {
       document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!shouldRender) return null;
 
   const handleDownload = () => {
     const link = document.createElement('a');
@@ -31,20 +55,38 @@ const CVModal = ({ isOpen, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${
+        isAnimating 
+          ? 'bg-black/50 backdrop-blur-sm' 
+          : 'bg-black/0 backdrop-blur-none'
+      }`}
+      style={{
+        animation: isAnimating ? 'fadeIn 0.3s ease-out' : 'none'
+      }}
       onClick={onClose}
     >
       <div 
-        className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col"
+        className={`bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col transition-all duration-500 ease-out ${
+          isAnimating 
+            ? 'opacity-100 scale-100 translate-y-0' 
+            : 'opacity-0 scale-95 translate-y-4'
+        }`}
+        style={{
+          animation: isAnimating ? 'modalSlideIn 0.4s ease-out' : 'none'
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-slate-200">
-          <div>
+          <div className={`transition-all duration-500 delay-100 ${
+            isAnimating ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+          }`}>
             <h2 className="text-2xl font-semibold text-slate-900">My Resume</h2>
             <p className="text-sm text-slate-500 mt-1">Ahmed Wael - Software Developer</p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className={`flex items-center gap-2 transition-all duration-500 delay-150 ${
+            isAnimating ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+          }`}>
             {/* Download Button */}
             <button
               onClick={handleDownload}
@@ -69,7 +111,9 @@ const CVModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* PDF Preview */}
-        <div className="flex-1 overflow-auto p-6">
+        <div className={`flex-1 overflow-auto p-6 transition-all duration-700 delay-200 ${
+          isAnimating ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+        }`}>
           <div className="bg-slate-100 rounded-xl overflow-hidden shadow-inner min-h-[600px]">
             <iframe
               src="/Ahmed_Wael_CV.pdf"
@@ -80,12 +124,37 @@ const CVModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-slate-200 bg-slate-50 rounded-b-2xl">
+        <div className={`p-4 border-t border-slate-200 bg-slate-50 rounded-b-2xl transition-all duration-500 delay-300 ${
+          isAnimating ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}>
           <p className="text-xs text-slate-500 text-center">
-            Press <kbd className="px-2 py-1 bg-white rounded border border-slate-300 text-slate-700">Esc</kbd> to close or click outside the modal
+            Press <kbd className="px-2 py-1 bg-white rounded border border-slate-300 text-slate-700">Esc</kbd> to close or click outside
           </p>
         </div>
       </div>
+
+      {/* animations */}
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        @keyframes modalSlideIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 };
