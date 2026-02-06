@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ProjectsSection from '../components/ProjectsSection'
 import ProjectModal from '../components/ProjectModal'
+import { BlurText, BlurFade, ScaleIn } from '../components/Animations'
 
 const ProjectsPage = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -310,12 +311,16 @@ const ProjectsPage = () => {
     <div className="py-8">
       {/* Page Header */}
       <div className="px-6 mb-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
-          My Projects
-        </h1>
-        <p className="text-slate-600 text-lg max-w-2xl">
-          Explore my portfolio of work, featuring web applications, designs, and creative solutions I've built.
-        </p>
+        <BlurFade delay={0} duration={0.5}>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+            <BlurText text="My Projects" delay={40} />
+          </h1>
+        </BlurFade>
+        <BlurFade delay={0.2} duration={0.6}>
+          <p className="text-slate-600 text-lg max-w-2xl">
+            Explore my portfolio of work, featuring web applications, designs, and creative solutions I've built.
+          </p>
+        </BlurFade>
       </div>
 
       {/* Projects Section */}
@@ -326,22 +331,31 @@ const ProjectsPage = () => {
         {/* <h2 className="text-2xl font-bold text-slate-800 mb-8">More Projects</h2> */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {moreProjects.map((project, idx) => (
-            <div 
-              key={idx}
-              onClick={(e) => handleProjectClick(e, project)}
-              className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-all hover:scale-[1.02] cursor-pointer"
-            >
-              <div className={`aspect-video ${project.bgColor} rounded-2xl mb-4 flex items-center justify-center`}>
-                <span className={`${project.textColor} text-sm`}>Project Image</span>
+            <ScaleIn key={idx} delay={0.1 + idx * 0.08} duration={0.5}>
+              <div 
+                onClick={(e) => handleProjectClick(e, project)}
+                className="group bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 cursor-pointer"
+              >
+                <div className={`aspect-video ${project.bgColor} rounded-2xl mb-4 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105`}>
+                  <span className={`${project.textColor} text-sm transition-transform duration-300 group-hover:scale-110`}>Project Image</span>
+                </div>
+                <h3 className="font-semibold text-slate-800 mb-2 group-hover:text-slate-900 transition-colors">{project.title}</h3>
+                <p className="text-slate-600 text-sm mb-4 line-clamp-2">{project.description}</p>
+                <div className="flex gap-2 flex-wrap">
+                  {project.tags.map((tag, tagIdx) => (
+                    <span 
+                      key={tag} 
+                      className="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-full transition-all duration-300 group-hover:bg-slate-200 group-hover:scale-105"
+                      style={{
+                        transitionDelay: `${tagIdx * 30}ms`
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <h3 className="font-semibold text-slate-800 mb-2">{project.title}</h3>
-              <p className="text-slate-600 text-sm mb-4">{project.description}</p>
-              <div className="flex gap-2 flex-wrap">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-full">{tag}</span>
-                ))}
-              </div>
-            </div>
+            </ScaleIn>
           ))}
         </div>
       </div>

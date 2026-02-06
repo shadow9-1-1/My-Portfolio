@@ -25,7 +25,7 @@ const ProjectsSection = () => {
     ],
     size: 'large',
     bgColor: 'bg-gradient-to-br from-violet-500 to-purple-600',
-    liveUrl: '#',
+    liveUrl: 'https://advancedsystm.com/',
     githubUrl: 'https://github.com/shadow9-1-1/ASCC-company-project'
   },
   {
