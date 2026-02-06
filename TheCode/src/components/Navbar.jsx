@@ -7,8 +7,19 @@ const Navbar = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
+
+  // Handle scroll to add background
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -36,7 +47,9 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="relative">
+    <div className={`sticky top-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
+    }`}>
       <SlideDown delay={0.1} duration={0.6} distance={30}>
         <nav className="flex items-center justify-between px-4 md:px-8 py-4 md:py-6 relative z-50">
           {/* Mobile Menu Button */}
@@ -69,6 +82,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.path}
+                onClick={() => window.scrollTo(0, 0)}
                 className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                   location.pathname === item.path
                     ? 'bg-black text-white'
