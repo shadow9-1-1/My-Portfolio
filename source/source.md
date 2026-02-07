@@ -17,11 +17,11 @@
 
 
 
-the story page ( so let me tell you my story)
-my cv data to the website 
-add that the user can download my cv
+the story page ( so let me tell you my story)- (as a rocet when you move closer to it it get ready to lunch or move - when click it lunch the rocet like it move in a cercet around the box then a close with full screen animation then start the story page - make it like iam telling my story  )
+- Done: my cv data to the website 
+- Done: add that the user can download my cv
 - Done: fix the hero section and imgs
-fix the title and favicon
+- Done: fix the title and favicon
 - Done: fix Work Experience dont stay up
 img into the small hero img with animation of hi when hover on it 
 - Done: footer with (made with love by - site pages - social links)
