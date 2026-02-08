@@ -80,15 +80,7 @@ const HeroSection = () => {
               className="inline"
             />
           
-            {' '}
-            <span className="inline-flex items-center justify-center w-28 h-14 bg-slate-700 rounded-full overflow-hidden mx-1 align-middle">
-              {/* Mountain image placeholder */}
-              <img 
-                src="max.png" 
-                alt="Mountain"
-                className="w-full h-full object-cover"
-              />
-            </span>{' '}
+            
             <br />
             <span className="inline-flex items-center text-2xl sm:text-3xl md:text-4xl">
               <span className="text-slate-900">{displayText}</span>
@@ -160,19 +152,19 @@ const HeroSection = () => {
           <BlurFade delay={0.6} className="absolute -bottom-4 sm:-bottom-5 md:-bottom-6 -right-2 sm:-right-3 md:-right-4 z-10">
             <div className="bg-black rounded-xl md:rounded-2xl p-1 md:p-1.5">
               <div className="bg-white rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 min-w-[120px] sm:min-w-[150px] md:min-w-[180px]">
-                <div className="flex items-start justify-between gap-2 md:gap-3">
+                <a href="#contact" className="flex items-start justify-between gap-2 md:gap-3 group">
                   <div>
-                    <h3 className="text-sm sm:text-lg md:text-xl font-semibold tracking-wide">My Story</h3>
+                    <h3 className="text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Say Hello</h3>
                     <p className="text-[10px] sm:text-xs text-slate-500 mt-0.5 md:mt-1 leading-relaxed">
-                      Let me tell you my story
+                      Let's build something great
                     </p>
                   </div>
-                  <button className="w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 bg-black rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 bg-black rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-slate-700 transition-colors">
                     <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
-                  </button>
-                </div>
+                  </span>
+                </a>
               </div>
             </div>
           </BlurFade>

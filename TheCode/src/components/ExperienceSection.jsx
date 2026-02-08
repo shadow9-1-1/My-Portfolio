@@ -3,7 +3,7 @@ import { BlurText, BlurFade, SlideIn, ScaleIn, Counter, MotionBlur } from './Ani
 const ExperienceSection = () => {
   const experiences = [
     {
-      role: 'Senior Frontend Developer',
+      role: 'Frontend Developer',
       company: 'ASCC Inc. - Project Based',
       period: 'Jul 2025 – Aug 2025',
       description: 'Developed and deployed a scalable multi-language corporate website using Flask, delivering a complete full-stack solution from UI design to backend architecture.',
