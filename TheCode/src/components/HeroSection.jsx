@@ -69,7 +69,7 @@ const HeroSection = () => {
         {/* Left Content */}
         <div className="col-span-12 lg:col-span-5 flex flex-col justify-center pt-4">
           <BlurFade delay={0} duration={0.5}>
-            <span className="text-sm text-slate-500 mb-6 block">👋 Hello there, I'm</span>
+            <span className="text-sm text-slate-500 dark:text-slate-400 mb-6 block">👋 Hello there, I'm</span>
           </BlurFade>
           
           <h1 className="text-[3.5rem] lg:text-[4rem] font-light leading-[1.1] mb-8 tracking-tight">
@@ -83,13 +83,13 @@ const HeroSection = () => {
             
             <br />
             <span className="inline-flex items-center text-2xl sm:text-3xl md:text-4xl">
-              <span className="text-slate-900">{displayText}</span>
-              <span className="w-[2px] h-[1em] bg-slate-900 ml-1 animate-pulse"></span>
+              <span className="text-slate-900 dark:text-white">{displayText}</span>
+              <span className="w-[2px] h-[1em] bg-slate-900 dark:bg-white ml-1 animate-pulse"></span>
             </span>
           </h1>
 
           <BlurFade delay={0.3} duration={0.6}>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wider leading-relaxed mb-8 max-w-sm">
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider leading-relaxed mb-8 max-w-sm">
               I design intuitive user experiences and build scalable full-stack applications.
               Bridging UI/UX design with powerful engineering to create digital products that are fast, functional, and user-centered.
             </p>
@@ -98,7 +98,7 @@ const HeroSection = () => {
           <BlurFade delay={0.4} duration={0.5}>
             <button
               onClick={() => setIsCVModalOpen(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-full text-sm font-medium hover:bg-slate-700 transition-all duration-300 hover:scale-105 hover:shadow-lg w-fit"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full text-sm font-medium hover:bg-slate-700 dark:hover:bg-slate-200 transition-all duration-300 hover:scale-105 hover:shadow-lg w-fit"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -150,17 +150,17 @@ const HeroSection = () => {
 
           {/* Info card - bottom right corner, outside hero image */}
           <BlurFade delay={0.6} className="absolute -bottom-4 sm:-bottom-5 md:-bottom-6 -right-2 sm:-right-3 md:-right-4 z-10">
-            <div className="bg-black rounded-xl md:rounded-2xl p-1 md:p-1.5">
-              <div className="bg-white rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 min-w-[120px] sm:min-w-[150px] md:min-w-[180px]">
+            <div className="bg-black dark:bg-white rounded-xl md:rounded-2xl p-1 md:p-1.5">
+              <div className="bg-white dark:bg-slate-900 rounded-lg md:rounded-xl p-2 sm:p-3 md:p-4 min-w-[120px] sm:min-w-[150px] md:min-w-[180px]">
                 <a href="#contact" className="flex items-start justify-between gap-2 md:gap-3 group">
                   <div>
-                    <h3 className="text-sm sm:text-lg md:text-xl font-semibold tracking-wide">Say Hello</h3>
-                    <p className="text-[10px] sm:text-xs text-slate-500 mt-0.5 md:mt-1 leading-relaxed">
+                    <h3 className="text-sm sm:text-lg md:text-xl font-semibold tracking-wide dark:text-white">Say Hello</h3>
+                    <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 md:mt-1 leading-relaxed">
                       Let's build something great
                     </p>
                   </div>
-                  <span className="w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 bg-black rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-slate-700 transition-colors">
-                    <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <span className="w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 bg-black dark:bg-white rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-slate-700 dark:group-hover:bg-slate-200 transition-colors">
+                    <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 text-white dark:text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
                   </span>

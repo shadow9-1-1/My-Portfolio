@@ -20,14 +20,14 @@ const ErrorPage = () => {
       {/* Animated background shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
-          className="absolute top-20 left-10 w-72 h-72 bg-violet-200/30 rounded-full blur-3xl animate-pulse"
+          className="absolute top-20 left-10 w-72 h-72 bg-violet-200/30 dark:bg-violet-900/30 rounded-full blur-3xl animate-pulse"
           style={{ 
             transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
             transition: 'transform 0.3s ease-out'
           }}
         />
         <div 
-          className="absolute bottom-20 right-10 w-96 h-96 bg-amber-200/30 rounded-full blur-3xl animate-pulse"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-amber-200/30 dark:bg-amber-900/30 rounded-full blur-3xl animate-pulse"
           style={{ 
             animationDelay: '1s',
             transform: `translate(${mousePosition.x * -0.3}px, ${mousePosition.y * -0.3}px)`,
@@ -35,7 +35,7 @@ const ErrorPage = () => {
           }}
         />
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-200/20 rounded-full blur-3xl animate-pulse"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-200/20 dark:bg-emerald-900/20 rounded-full blur-3xl animate-pulse"
           style={{ animationDelay: '0.5s' }}
         />
       </div>
@@ -45,7 +45,7 @@ const ErrorPage = () => {
         {/* Glitchy 404 */}
         <div className="relative mb-8">
           <h1 
-            className="text-[150px] md:text-[200px] font-black text-slate-900/5 leading-none select-none"
+            className="text-[150px] md:text-[200px] font-black text-slate-900/5 dark:text-white/5 leading-none select-none"
             style={{
               transform: `translate(${mousePosition.x * 0.1}px, ${mousePosition.y * 0.1}px)`,
               transition: 'transform 0.2s ease-out'
@@ -56,7 +56,7 @@ const ErrorPage = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative">
               <span 
-                className="text-6xl md:text-8xl font-black text-slate-900 relative z-10"
+                className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white relative z-10"
                 style={{
                   transform: `translate(${mousePosition.x * -0.05}px, ${mousePosition.y * -0.05}px)`,
                   transition: 'transform 0.15s ease-out'
@@ -83,10 +83,10 @@ const ErrorPage = () => {
 
         {/* Message */}
         <div className="space-y-4 mb-10">
-          <h2 className="text-2xl md:text-3xl font-semibold text-slate-800">
+          <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 dark:text-white">
             Page Not Found
           </h2>
-          <p className="text-slate-500 text-lg max-w-md mx-auto">
+          <p className="text-slate-500 dark:text-slate-400 text-lg max-w-md mx-auto">
             Looks like you've ventured into the unknown. The page you're looking for doesn't exist or has been moved.
           </p>
         </div>
@@ -95,7 +95,7 @@ const ErrorPage = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             to="/"
-            className="group flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-full font-medium hover:bg-slate-800 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-slate-900/20"
+            className="group flex items-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-black px-8 py-4 rounded-full font-medium hover:bg-slate-800 dark:hover:bg-slate-200 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-slate-900/20 dark:hover:shadow-white/20"
           >
             <svg 
               className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" 
@@ -110,7 +110,7 @@ const ErrorPage = () => {
           
           <Link
             to="/contact"
-            className="group flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-full font-medium border-2 border-slate-200 hover:border-slate-900 transition-all duration-300 hover:scale-105"
+            className="group flex items-center gap-2 bg-white dark:bg-slate-800 text-slate-900 dark:text-white px-8 py-4 rounded-full font-medium border-2 border-slate-200 dark:border-slate-700 hover:border-slate-900 dark:hover:border-white transition-all duration-300 hover:scale-105"
           >
             Report Issue
             <svg 
@@ -125,8 +125,8 @@ const ErrorPage = () => {
         </div>
 
         {/* Fun interactive element */}
-        <div className="mt-16 pt-8 border-t border-slate-200">
-          <p className="text-slate-400 text-sm mb-4">Or explore these pages:</p>
+        <div className="mt-16 pt-8 border-t border-slate-200 dark:border-slate-700">
+          <p className="text-slate-400 dark:text-slate-500 text-sm mb-4">Or explore these pages:</p>
           <div className="flex flex-wrap justify-center gap-3">
             {[
               { name: 'Projects', path: '/projects', icon: '💼' },
@@ -136,10 +136,10 @@ const ErrorPage = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="flex items-center gap-2 px-5 py-2.5 bg-white rounded-full shadow-sm border border-slate-100 hover:border-slate-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
+                className="flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-slate-800 rounded-full shadow-sm border border-slate-100 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-500 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
               >
                 <span>{item.icon}</span>
-                <span className="text-slate-600 text-sm font-medium">{item.name}</span>
+                <span className="text-slate-600 dark:text-slate-300 text-sm font-medium">{item.name}</span>
               </Link>
             ))}
           </div>

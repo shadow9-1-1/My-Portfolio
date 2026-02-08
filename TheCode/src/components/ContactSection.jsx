@@ -163,18 +163,18 @@ const ContactSection = () => {
             <ScaleIn key={idx} delay={0.1 * idx} duration={0.5}>
               <a
                 href={method.link}
-                className="flex items-center gap-4 bg-white rounded-2xl p-5 shadow-sm transition-all duration-300 cursor-pointer hover:shadow-md hover:scale-[1.02] hover:-translate-y-1 group"
+                className="flex items-center gap-4 bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm transition-all duration-300 cursor-pointer hover:shadow-md hover:scale-[1.02] hover:-translate-y-1 group"
               >
-                <div className={`w-14 h-14 rounded-2xl ${method.bgColor} flex items-center justify-center ${method.iconColor} transition-transform duration-300 group-hover:scale-110`}>
+                <div className={`w-14 h-14 rounded-2xl ${method.bgColor} dark:opacity-80 flex items-center justify-center ${method.iconColor} transition-transform duration-300 group-hover:scale-110`}>
                   {method.icon}
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm text-slate-500">{method.title}</p>
-                  <p className="font-medium text-slate-900 group-hover:text-slate-600 transition-colors">
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{method.title}</p>
+                  <p className="font-medium text-slate-900 dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
                     {method.value}
                   </p>
                 </div>
-                <svg className="w-5 h-5 text-slate-400 group-hover:text-slate-600 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-slate-400 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-300 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </a>
@@ -194,12 +194,12 @@ const ContactSection = () => {
 
           {/* Availability Card */}
           <BlurFade delay={0.4} duration={0.6}>
-            <div className="bg-emerald-50 rounded-3xl p-6 border border-emerald-100 transition-all duration-300 cursor-pointer hover:shadow-md hover:scale-[1.02] hover:-translate-y-1 hover:border-emerald-200">
+            <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-3xl p-6 border border-emerald-100 dark:border-emerald-800 transition-all duration-300 cursor-pointer hover:shadow-md hover:scale-[1.02] hover:-translate-y-1 hover:border-emerald-200 dark:hover:border-emerald-700">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-emerald-700 font-medium">Available for work</span>
+                <span className="text-emerald-700 dark:text-emerald-400 font-medium">Available for work</span>
               </div>
-              <p className="text-slate-600 text-sm">
+              <p className="text-slate-600 dark:text-slate-400 text-sm">
                 I'm currently open to freelance projects and full-time opportunities. 
                 Let's discuss how I can help bring your ideas to life.
               </p>

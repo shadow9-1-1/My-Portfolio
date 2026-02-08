@@ -50,7 +50,7 @@ const SocialIcons = ({ className = '', vertical = false }) => {
           href={social.href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-400 ${social.hoverColor} hover:bg-slate-50 hover:scale-110 transition-all duration-300`}
+          className={`w-10 h-10 rounded-full bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-slate-400 dark:text-slate-500 ${social.hoverColor} hover:bg-slate-50 dark:hover:bg-slate-700 hover:scale-110 transition-all duration-300`}
           aria-label={social.name}
         >
           {social.icon}

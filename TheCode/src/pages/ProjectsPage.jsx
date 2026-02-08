@@ -312,12 +312,12 @@ const ProjectsPage = () => {
       {/* Page Header */}
       <div className="px-6 mb-10">
         <BlurFade delay={0} duration={0.5}>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-4">
             <BlurText text="My Projects" delay={40} />
           </h1>
         </BlurFade>
         <BlurFade delay={0.2} duration={0.6}>
-          <p className="text-slate-600 text-lg max-w-2xl">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl">
             Explore my portfolio of work, featuring web applications, designs, and creative solutions I've built.
           </p>
         </BlurFade>
@@ -334,18 +334,18 @@ const ProjectsPage = () => {
             <ScaleIn key={idx} delay={0.1 + idx * 0.08} duration={0.5}>
               <div 
                 onClick={(e) => handleProjectClick(e, project)}
-                className="group bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 cursor-pointer"
+                className="group bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 cursor-pointer"
               >
                 <div className={`aspect-video ${project.bgColor} rounded-2xl mb-4 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105`}>
                   <span className={`${project.textColor} text-sm transition-transform duration-300 group-hover:scale-110`}>Project Image</span>
                 </div>
-                <h3 className="font-semibold text-slate-800 mb-2 group-hover:text-slate-900 transition-colors">{project.title}</h3>
-                <p className="text-slate-600 text-sm mb-4 line-clamp-2">{project.description}</p>
+                <h3 className="font-semibold text-slate-800 dark:text-white mb-2 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">{project.title}</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">{project.description}</p>
                 <div className="flex gap-2 flex-wrap">
                   {project.tags.map((tag, tagIdx) => (
                     <span 
                       key={tag} 
-                      className="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-full transition-all duration-300 group-hover:bg-slate-200 group-hover:scale-105"
+                      className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded-full transition-all duration-300 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:scale-105"
                       style={{
                         transitionDelay: `${tagIdx * 30}ms`
                       }}

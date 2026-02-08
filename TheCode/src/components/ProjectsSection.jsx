@@ -300,13 +300,13 @@ const ProjectsSection = () => {
     <section id="projects" className="px-6 py-16">
       <div className="mb-10">
         <BlurFade delay={0} duration={0.5}>
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Portfolio</span>
+          <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Portfolio</span>
         </BlurFade>
-        <h2 className="text-3xl md:text-4xl font-light mt-2">
+        <h2 className="text-3xl md:text-4xl font-light mt-2 dark:text-white">
           <BlurText text="Featured Projects" delay={30} />
         </h2>
         <BlurFade delay={0.2} duration={0.5}>
-          <p className="text-slate-500 text-sm mt-2 max-w-md">
+          <p className="text-slate-500 dark:text-slate-400 text-sm mt-2 max-w-md">
             A collection of projects that showcase my skills and passion for building great products.
           </p>
         </BlurFade>
@@ -377,7 +377,7 @@ const ProjectsSection = () => {
         <Link
           to="/projects"
           onClick={() => window.scrollTo(0, 0)}
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition-colors"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-black text-sm font-medium hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors"
         >
           View All Projects
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

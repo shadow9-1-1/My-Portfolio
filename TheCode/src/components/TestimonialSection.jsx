@@ -23,15 +23,15 @@ const TestimonialSection = () => {
   return (
     <section className="px-6 py-16">
       <div className="text-center mb-12">
-        <span className="text-xs text-slate-500 uppercase tracking-wide">Testimonials</span>
-        <h2 className="text-3xl md:text-4xl font-light mt-2">What Our Customers Say</h2>
+        <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Testimonials</span>
+        <h2 className="text-3xl md:text-4xl font-light mt-2 dark:text-white">What Our Customers Say</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {testimonials.map((testimonial, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow"
+            className="bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow"
           >
             {/* Stars */}
             <div className="flex gap-1 mb-6">
@@ -47,16 +47,16 @@ const TestimonialSection = () => {
             </div>
 
             {/* Quote */}
-            <p className="text-slate-700 mb-8 leading-relaxed">"{testimonial.quote}"</p>
+            <p className="text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">"{testimonial.quote}"</p>
 
             {/* Author */}
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center text-sm font-medium text-slate-600">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 flex items-center justify-center text-sm font-medium text-slate-600 dark:text-slate-300">
                 {testimonial.avatar}
               </div>
               <div>
-                <p className="font-medium text-sm">{testimonial.author}</p>
-                <p className="text-xs text-slate-500">{testimonial.role}</p>
+                <p className="font-medium text-sm dark:text-white">{testimonial.author}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">{testimonial.role}</p>
               </div>
             </div>
           </div>

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import IntroAnimation from './components/IntroAnimation'
 import { HomePage, AboutPage, ProjectsPage, ContactPage, ErrorPage } from './pages'
+import { ThemeProvider } from './context/ThemeContext'
 
 function App() {
   const [showIntro, setShowIntro] = useState(false);
@@ -27,24 +28,26 @@ function App() {
   };
 
   return (
-    <Router>
-      {/* Intro Animation */}
-      {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
-      
-      <div className={`min-h-screen bg-slate-50 transition-opacity duration-500 ${contentReady ? 'opacity-100' : 'opacity-0'}`}>
-        <Navbar />
-        <main className="max-w-7xl mx-auto">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        {/* Intro Animation */}
+        {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
+        
+        <div className={`min-h-screen bg-slate-50 dark:bg-slate-950 transition-all duration-300 ${contentReady ? 'opacity-100' : 'opacity-0'}`}>
+          <Navbar />
+          <main className="max-w-7xl mx-auto">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   )
 }
 
