@@ -26,7 +26,7 @@ const ExperienceSection = () => {
       <div className="grid grid-cols-12 gap-8">
         {/* Left - Header */}
         <div className="col-span-12 md:col-span-4">
-          <div className="md:sticky md:top-8">
+          <div className="md:sticky md:top-27">
             <BlurFade delay={0.1}>
               <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Journey</span>
             </BlurFade>
