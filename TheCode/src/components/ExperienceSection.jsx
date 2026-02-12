@@ -3,6 +3,14 @@ import { BlurText, BlurFade, SlideIn, ScaleIn, Counter, MotionBlur } from './Ani
 const ExperienceSection = () => {
   const experiences = [
     {
+      role: 'Internship - AI',
+      company: 'CIB Egypt - Corporate Internship Program',
+      period: 'Aug 2025 – Sep 2025',
+      description: 'Participated in an intensive internship program focused on banking, innovation, and sustainability through guided learning and mentorship.',
+      achievements: ['Completed technical and business courses', 'Participated in mentor-led sessions', 'Earned a SAS digital badge in AI'],
+      current: false,
+    },
+    {
       role: 'Frontend Developer',
       company: 'ASCC Inc. - Project Based',
       period: 'Jul 2025 – Aug 2025',
@@ -11,14 +19,7 @@ const ExperienceSection = () => {
         'Implemented responsive UI and database integration', 'Delivered scalable full-stack solution'],
       current: false,
     },
-    {
-      role: 'Internship - AI',
-      company: 'CIB Egypt - Corporate Internship Program',
-      period: 'Aug 2025 – Sep 2025',
-      description: 'Participated in an intensive internship program focused on banking, innovation, and sustainability through guided learning and mentorship.',
-      achievements: ['Completed technical and business courses', 'Participated in mentor-led sessions', 'Earned a SAS digital badge in AI'],
-      current: false,
-    },
+    
   ];
 
   return (
