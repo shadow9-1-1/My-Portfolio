@@ -134,6 +134,7 @@ const Navbar = () => {
       {/* Mobile Navigation Dropdown - slides from top */}
       <div 
         ref={menuRef}
+        
         className={`lg:hidden absolute left-0 right-0 bg-white dark:bg-slate-900 shadow-lg z-40 overflow-hidden transition-all duration-400 ease-out ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
@@ -143,7 +144,7 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.path}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => { setIsMenuOpen(false); window.scrollTo(0, 0); }}
               className={`px-6 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
                 location.pathname === item.path
                   ? 'bg-black dark:bg-white text-white dark:text-black'

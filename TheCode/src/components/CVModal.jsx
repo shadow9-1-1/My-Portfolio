@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 const CVModal = ({ isOpen, onClose }) => {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -53,7 +54,7 @@ const CVModal = ({ isOpen, onClose }) => {
     document.body.removeChild(link);
   };
 
-  return (
+  return createPortal(
     <div 
       className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${
         isAnimating 
@@ -155,7 +156,8 @@ const CVModal = ({ isOpen, onClose }) => {
           }
         }
       `}</style>
-    </div>
+    </div>,
+    document.body
   );
 };
 
