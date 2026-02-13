@@ -92,53 +92,61 @@ const ContactSection = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">Your Name</label>
+                  <label htmlFor="contact-name" className="block text-sm text-slate-400 mb-2">Your Name</label>
                   <input
                     type="text"
+                    id="contact-name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your Name"
                     required
+                    autoComplete="name"
                     className="w-full bg-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-slate-400 mb-2">Your Email</label>
+                  <label htmlFor="contact-email" className="block text-sm text-slate-400 mb-2">Your Email</label>
                   <input
                     type="email"
+                    id="contact-email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="yourname@example.com"
                     required
+                    autoComplete="email"
                     className="w-full bg-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Subject</label>
+                <label htmlFor="contact-subject" className="block text-sm text-slate-400 mb-2">Subject</label>
                 <input
                   type="text"
+                  id="contact-subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="What is it about?"
                   required
+                  autoComplete="on"
                   className="w-full bg-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Message</label>
+                <label htmlFor="contact-message" className="block text-sm text-slate-400 mb-2">Message</label>
                 <textarea
+                  id="contact-message"
                   rows={5}
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell me what's on your mind..."
                   required
+                  autoComplete="on"
                   className="w-full bg-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all resize-none"
                 />
               </div>
