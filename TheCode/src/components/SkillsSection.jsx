@@ -39,7 +39,7 @@ const SkillsSection = () => {
     },
     {
       title: 'CS Fundamentals',
-      skills: ['Data Structures', 'Algorithms', 'OOP', 'OOAD'],
+      skills: ['Data Structures', 'Algorithms', 'OOP', 'OOAD', 'Software Systems Requirements'],
     },
     {
       title: 'UX/UI',
@@ -51,7 +51,7 @@ const SkillsSection = () => {
     },
     {
       title: 'Documentation',
-      skills: ['Software Requirements', 'Class Diagrams', 'Use Case Diagrams', 'User Stories'],
+      skills: ['Software Requirements', 'SRS', 'SDS', 'Class Diagrams', 'Use Case Diagrams', 'User Stories'],
     },
   ];
 
@@ -122,7 +122,7 @@ const SkillsSection = () => {
       <BlurFade delay={0.5} duration={0.6}>
         <div className="mt-12 flex items-center gap-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent" />
-          <span className="text-xs text-slate-400 dark:text-slate-600 uppercase tracking-widest">Always Learning</span>
+          <span className="text-xs text-slate-400 dark:text-slate-600 uppercase tracking-widest">And Always Keep Learning</span>
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent" />
         </div>
       </BlurFade>
