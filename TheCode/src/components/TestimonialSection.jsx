@@ -1,12 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { 
-  motion, 
-  AnimatePresence, 
-  useMotionValue, 
-  useTransform,
-  useSpring,
-  useDragControls
-} from 'motion/react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { AnimateText } from 'motion-plus-react';
 
 const testimonials = [
@@ -17,6 +10,7 @@ const testimonials = [
     role: "Adventure Photographer",
     avatar: "SC",
     gradient: "from-rose-400 to-orange-300",
+    image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833?w=600&h=700&fit=crop",
   },
   {
     id: 2,
@@ -25,6 +19,7 @@ const testimonials = [
     role: "Mountain Guide",
     avatar: "MR",
     gradient: "from-blue-400 to-cyan-300",
+    image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=700&fit=crop",
   },
   {
     id: 3,
@@ -33,6 +28,7 @@ const testimonials = [
     role: "Travel Blogger",
     avatar: "ET",
     gradient: "from-violet-400 to-purple-300",
+    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&h=700&fit=crop",
   },
   {
     id: 4,
@@ -41,6 +37,7 @@ const testimonials = [
     role: "Wildlife Photographer",
     avatar: "DP",
     gradient: "from-emerald-400 to-teal-300",
+    image: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=600&h=700&fit=crop",
   },
   {
     id: 5,
@@ -49,203 +46,115 @@ const testimonials = [
     role: "Hiking Enthusiast",
     avatar: "LW",
     gradient: "from-amber-400 to-yellow-300",
+    image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&h=700&fit=crop",
   },
 ];
 
-// Slide variants for entrance/exit animations
-const slideVariants = {
-  enter: (direction) => ({
-    x: direction > 0 ? 1000 : -1000,
-    opacity: 0,
-    scale: 0.8,
-    rotateY: direction > 0 ? 45 : -45,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-    scale: 1,
-    rotateY: 0,
-    transition: {
-      x: { type: "spring", stiffness: 300, damping: 30 },
-      opacity: { duration: 0.4 },
-      scale: { duration: 0.4 },
-      rotateY: { duration: 0.4 },
-    },
-  },
-  exit: (direction) => ({
-    x: direction < 0 ? 1000 : -1000,
-    opacity: 0,
-    scale: 0.8,
-    rotateY: direction < 0 ? 45 : -45,
-    transition: {
-      x: { type: "spring", stiffness: 300, damping: 30 },
-      opacity: { duration: 0.3 },
-    },
-  }),
-};
-
-// Testimonial Card Component
-const TestimonialCard = ({ testimonial, isActive }) => {
-  const cardRef = useRef(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useTransform(mouseY, [-150, 150], [5, -5]);
-  const rotateY = useTransform(mouseX, [-150, 150], [-5, 5]);
-  
-  const springRotateX = useSpring(rotateX, { stiffness: 150, damping: 20 });
-  const springRotateY = useSpring(rotateY, { stiffness: 150, damping: 20 });
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    mouseX.set(e.clientX - centerX);
-    mouseY.set(e.clientY - centerY);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX: springRotateX,
-        rotateY: springRotateY,
-        transformStyle: "preserve-3d",
-      }}
-      className="relative bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-10 shadow-2xl max-w-2xl mx-auto"
-    >
-      {/* Decorative gradient blob */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.15, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className={`absolute -top-20 -right-20 w-60 h-60 rounded-full bg-gradient-to-br ${testimonial.gradient} blur-3xl`}
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className={`absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-gradient-to-br ${testimonial.gradient} blur-3xl`}
-      />
-
-      {/* Quote icon */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.2 }}
-        className="absolute top-6 right-6 text-slate-200 dark:text-slate-700"
-      >
-        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-        </svg>
-      </motion.div>
-
-      {/* Stars */}
-      <div className="flex gap-1.5 mb-8">
-        {[...Array(5)].map((_, i) => (
-          <motion.svg
-            key={i}
-            initial={{ opacity: 0, scale: 0, rotate: -180 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ 
-              duration: 0.4, 
-              delay: 0.1 + i * 0.08,
-              type: "spring",
-              stiffness: 200,
-            }}
-            className="w-6 h-6 text-amber-400 fill-current"
-            viewBox="0 0 20 20"
-          >
-            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-          </motion.svg>
-        ))}
-      </div>
-
-      {/* Quote */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-slate-700 dark:text-slate-300 text-xl md:text-2xl leading-relaxed relative z-10 font-light"
-      >
-        "{testimonial.quote}"
-      </motion.p>
-
-      {/* Author */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="flex items-center gap-4 mt-10"
-      >
-        <motion.div
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          whileTap={{ scale: 0.95 }}
-          className={`w-16 h-16 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-lg font-bold text-white shadow-xl`}
-        >
-          {testimonial.avatar}
-        </motion.div>
-        <div>
-          <p className="font-semibold text-lg dark:text-white">{testimonial.author}</p>
-          <p className="text-slate-500 dark:text-slate-400">{testimonial.role}</p>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-};
-
 const TestimonialSection = () => {
-  const [[activeIndex, direction], setPage] = useState([0, 0]);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const dragControls = useDragControls();
-  const containerRef = useRef(null);
-  
-  // Wrap around index
-  const testimonialIndex = ((activeIndex % testimonials.length) + testimonials.length) % testimonials.length;
 
   // Auto-play
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(() => {
-      setPage(([prev]) => [prev + 1, 1]);
-    }, 5000);
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
 
   const paginate = (newDirection) => {
-    setPage(([prev]) => [prev + newDirection, newDirection]);
+    setActiveIndex((prev) => {
+      const next = prev + newDirection;
+      if (next < 0) return testimonials.length - 1;
+      if (next >= testimonials.length) return 0;
+      return next;
+    });
     setIsAutoPlaying(false);
-    // Resume auto-play after interaction
     setTimeout(() => setIsAutoPlaying(true), 8000);
   };
 
   const goToSlide = (index) => {
-    const diff = index - testimonialIndex;
-    setPage(([prev]) => [prev + diff, diff > 0 ? 1 : -1]);
+    setActiveIndex(index);
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 8000);
   };
 
-  // Drag handling
-  const handleDragEnd = (_, info) => {
-    const swipeThreshold = 50;
-    if (info.offset.x < -swipeThreshold) {
-      paginate(1);
-    } else if (info.offset.x > swipeThreshold) {
-      paginate(-1);
+  // Get visible cards (previous, current, next)
+  const getCardStyle = (index) => {
+    const diff = index - activeIndex;
+    const totalItems = testimonials.length;
+    
+    // Handle wrap-around
+    let normalizedDiff = diff;
+    if (diff > totalItems / 2) normalizedDiff = diff - totalItems;
+    if (diff < -totalItems / 2) normalizedDiff = diff + totalItems;
+
+    const isCenter = normalizedDiff === 0;
+    const isLeft = normalizedDiff === -1;
+    const isRight = normalizedDiff === 1;
+    const isFarLeft = normalizedDiff === -2;
+    const isFarRight = normalizedDiff === 2;
+
+    if (isCenter) {
+      return {
+        x: 0,
+        scale: 1,
+        rotateY: 0,
+        zIndex: 30,
+        opacity: 1,
+        filter: "brightness(1)",
+      };
+    } else if (isLeft) {
+      return {
+        x: -280,
+        scale: 0.75,
+        rotateY: 45,
+        zIndex: 20,
+        opacity: 0.7,
+        filter: "brightness(0.6)",
+      };
+    } else if (isRight) {
+      return {
+        x: 280,
+        scale: 0.75,
+        rotateY: -45,
+        zIndex: 20,
+        opacity: 0.7,
+        filter: "brightness(0.6)",
+      };
+    } else if (isFarLeft) {
+      return {
+        x: -420,
+        scale: 0.5,
+        rotateY: 60,
+        zIndex: 10,
+        opacity: 0.3,
+        filter: "brightness(0.4)",
+      };
+    } else if (isFarRight) {
+      return {
+        x: 420,
+        scale: 0.5,
+        rotateY: -60,
+        zIndex: 10,
+        opacity: 0.3,
+        filter: "brightness(0.4)",
+      };
+    } else {
+      return {
+        x: normalizedDiff > 0 ? 600 : -600,
+        scale: 0.3,
+        rotateY: normalizedDiff > 0 ? -70 : 70,
+        zIndex: 0,
+        opacity: 0,
+        filter: "brightness(0.3)",
+      };
     }
   };
 
   return (
-    <section className="px-6 py-20 overflow-hidden">
+    <section className="px-6 py-20 overflow-hidden bg-black min-h-screen flex flex-col justify-center">
       {/* Header */}
       <div className="text-center mb-16">
         <motion.span
@@ -253,7 +162,7 @@ const TestimonialSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="inline-block px-4 py-1.5 text-xs text-slate-600 dark:text-slate-300 uppercase tracking-widest bg-slate-100 dark:bg-slate-800 rounded-full mb-4"
+          className="inline-block px-4 py-1.5 text-xs text-slate-300 uppercase tracking-widest bg-slate-800 rounded-full mb-4"
         >
           Testimonials
         </motion.span>
@@ -270,32 +179,25 @@ const TestimonialSection = () => {
               hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
               visible: { opacity: 1, y: 0, filter: "blur(0px)" },
             }}
-            className="text-3xl md:text-5xl font-light dark:text-white"
+            className="text-3xl md:text-5xl font-light text-white"
           >
             What Our Customers Say
           </AnimateText>
         </motion.div>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-slate-500 dark:text-slate-400 mt-4 max-w-md mx-auto"
-        >
-          Hear from adventurers who trust our products
-        </motion.p>
       </div>
 
-      {/* Carousel */}
-      <div className="relative max-w-4xl mx-auto" style={{ perspective: 1000 }}>
+      {/* 3D Carousel */}
+      <div 
+        className="relative h-[500px] md:h-[550px] flex items-center justify-center"
+        style={{ perspective: "1200px" }}
+      >
         {/* Navigation Arrows */}
         <motion.button
           whileHover={{ scale: 1.1, x: -5 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => paginate(-1)}
-          className="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white dark:bg-slate-800 shadow-xl flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
-          aria-label="Previous testimonial"
+          className="absolute left-4 md:left-20 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+          aria-label="Previous"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -306,115 +208,122 @@ const TestimonialSection = () => {
           whileHover={{ scale: 1.1, x: 5 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => paginate(1)}
-          className="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white dark:bg-slate-800 shadow-xl flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
-          aria-label="Next testimonial"
+          className="absolute right-4 md:right-20 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+          aria-label="Next"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </motion.button>
 
-        {/* Carousel Container */}
-        <div 
-          ref={containerRef}
-          className="relative h-[420px] md:h-[380px] overflow-hidden"
-        >
-          <AnimatePresence initial={false} custom={direction} mode="popLayout">
-            <motion.div
-              key={activeIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              drag="x"
-              dragControls={dragControls}
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.2}
-              onDragEnd={handleDragEnd}
-              className="absolute inset-0 cursor-grab active:cursor-grabbing"
-            >
-              <TestimonialCard
-                testimonial={testimonials[testimonialIndex]}
-                isActive={true}
-              />
-            </motion.div>
-          </AnimatePresence>
+        {/* Cards Container */}
+        <div className="relative w-full h-full flex items-center justify-center" style={{ transformStyle: "preserve-3d" }}>
+          {testimonials.map((testimonial, index) => {
+            const style = getCardStyle(index);
+            
+            return (
+              <motion.div
+                key={testimonial.id}
+                className="absolute w-[280px] h-[380px] md:w-[320px] md:h-[420px] cursor-pointer"
+                animate={{
+                  x: style.x,
+                  scale: style.scale,
+                  rotateY: style.rotateY,
+                  zIndex: style.zIndex,
+                  opacity: style.opacity,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                }}
+                style={{
+                  transformStyle: "preserve-3d",
+                  filter: style.filter,
+                }}
+                onClick={() => goToSlide(index)}
+                whileHover={style.zIndex === 30 ? { scale: 1.02 } : {}}
+              >
+                <div className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-slate-900">
+                  {/* Image */}
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.author}
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                  />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <p className="text-white/90 text-sm md:text-base leading-relaxed mb-4 line-clamp-3">
+                      "{testimonial.quote}"
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-xs font-bold text-white`}>
+                        {testimonial.avatar}
+                      </div>
+                      <div>
+                        <p className="text-white font-medium text-sm">{testimonial.author}</p>
+                        <p className="text-white/60 text-xs">{testimonial.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
-
-        {/* Progress Indicators */}
-        <div className="flex justify-center items-center gap-3 mt-10">
-          {testimonials.map((testimonial, idx) => (
-            <motion.button
-              key={testimonial.id}
-              onClick={() => goToSlide(idx)}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              className="relative h-3 rounded-full overflow-hidden transition-all duration-300"
-              style={{ width: testimonialIndex === idx ? 40 : 12 }}
-              aria-label={`Go to testimonial ${idx + 1}`}
-            >
-              <motion.span
-                className={`absolute inset-0 rounded-full transition-colors duration-300 ${
-                  testimonialIndex === idx
-                    ? `bg-gradient-to-r ${testimonial.gradient}`
-                    : 'bg-slate-300 dark:bg-slate-600'
-                }`}
-              />
-              {/* Auto-play progress */}
-              {testimonialIndex === idx && isAutoPlaying && (
-                <motion.span
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 5, ease: "linear" }}
-                  className="absolute inset-0 bg-white/40 rounded-full origin-left"
-                />
-              )}
-            </motion.button>
-          ))}
-        </div>
-
-        {/* Auto-play Toggle */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="flex justify-center mt-6"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-            className="flex items-center gap-2 px-4 py-2 text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
-          >
-            {isAutoPlaying ? (
-              <>
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-                </svg>
-                Pause
-              </>
-            ) : (
-              <>
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-                Play
-              </>
-            )}
-          </motion.button>
-        </motion.div>
-
-        {/* Keyboard hint */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="text-center text-xs text-slate-400 dark:text-slate-500 mt-4"
-        >
-          Drag or swipe to navigate
-        </motion.p>
       </div>
+
+      {/* Pagination Dots */}
+      <div className="flex justify-center items-center gap-2 mt-8">
+        {testimonials.map((testimonial, idx) => (
+          <motion.button
+            key={testimonial.id}
+            onClick={() => goToSlide(idx)}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              activeIndex === idx ? 'w-8 bg-white' : 'w-2 bg-white/30 hover:bg-white/50'
+            }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Auto-play Toggle */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="flex justify-center mt-4"
+      >
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+          className="flex items-center gap-2 px-4 py-2 text-sm text-white/50 hover:text-white/80 transition-colors"
+        >
+          {isAutoPlaying ? (
+            <>
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+              </svg>
+              Pause
+            </>
+          ) : (
+            <>
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Play
+            </>
+          )}
+        </motion.button>
+      </motion.div>
     </section>
   );
 };
