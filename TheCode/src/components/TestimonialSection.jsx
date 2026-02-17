@@ -154,7 +154,7 @@ const TestimonialSection = () => {
   };
 
   return (
-    <section className="px-6 py-20 overflow-hidden bg-black min-h-screen flex flex-col justify-center">
+    <section className="px-6 py-20 overflow-hidden bg-slate-100 dark:bg-black min-h-screen flex flex-col justify-center">
       {/* Header */}
       <div className="text-center mb-16">
         <motion.span
@@ -162,7 +162,7 @@ const TestimonialSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="inline-block px-4 py-1.5 text-xs text-slate-300 uppercase tracking-widest bg-slate-800 rounded-full mb-4"
+          className="inline-block px-4 py-1.5 text-xs text-slate-600 dark:text-slate-300 uppercase tracking-widest bg-white dark:bg-slate-800 rounded-full mb-4"
         >
           Testimonials
         </motion.span>
@@ -179,7 +179,7 @@ const TestimonialSection = () => {
               hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
               visible: { opacity: 1, y: 0, filter: "blur(0px)" },
             }}
-            className="text-3xl md:text-5xl font-light text-white"
+            className="text-3xl md:text-5xl font-light text-slate-900 dark:text-white"
           >
             What Our Customers Say
           </AnimateText>
@@ -196,7 +196,7 @@ const TestimonialSection = () => {
           whileHover={{ scale: 1.1, x: -5 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => paginate(-1)}
-          className="absolute left-4 md:left-20 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+          className="absolute left-4 md:left-20 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/80 dark:bg-white/10 backdrop-blur-sm flex items-center justify-center text-slate-700 dark:text-white hover:bg-white dark:hover:bg-white/20 transition-colors shadow-lg dark:shadow-none"
           aria-label="Previous"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -208,7 +208,7 @@ const TestimonialSection = () => {
           whileHover={{ scale: 1.1, x: 5 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => paginate(1)}
-          className="absolute right-4 md:right-20 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+          className="absolute right-4 md:right-20 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/80 dark:bg-white/10 backdrop-blur-sm flex items-center justify-center text-slate-700 dark:text-white hover:bg-white dark:hover:bg-white/20 transition-colors shadow-lg dark:shadow-none"
           aria-label="Next"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,7 +244,7 @@ const TestimonialSection = () => {
                 onClick={() => goToSlide(index)}
                 whileHover={style.zIndex === 30 ? { scale: 1.02 } : {}}
               >
-                <div className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-slate-900">
+                <div className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-slate-900 relative">
                   {/* Image */}
                   <img
                     src={testimonial.image}
@@ -253,11 +253,11 @@ const TestimonialSection = () => {
                     draggable={false}
                   />
                   
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  {/* Gradient Overlay - with rounded bottom */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent rounded-3xl" />
                   
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 rounded-b-3xl">
                     <p className="text-white/90 text-sm md:text-base leading-relaxed mb-4 line-clamp-3">
                       "{testimonial.quote}"
                     </p>
@@ -287,7 +287,7 @@ const TestimonialSection = () => {
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
             className={`h-2 rounded-full transition-all duration-300 ${
-              activeIndex === idx ? 'w-8 bg-white' : 'w-2 bg-white/30 hover:bg-white/50'
+              activeIndex === idx ? 'w-8 bg-slate-800 dark:bg-white' : 'w-2 bg-slate-400/50 dark:bg-white/30 hover:bg-slate-500 dark:hover:bg-white/50'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />
@@ -305,7 +305,7 @@ const TestimonialSection = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-          className="flex items-center gap-2 px-4 py-2 text-sm text-white/50 hover:text-white/80 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 text-sm text-slate-500 dark:text-white/50 hover:text-slate-700 dark:hover:text-white/80 transition-colors"
         >
           {isAutoPlaying ? (
             <>
