@@ -28,7 +28,7 @@ const HomePage = () => {
       <ContactSection />
 
       {/* Testimonials */}
-      <TestimonialSection />
+      {/* <TestimonialSection /> */}
     </>
   )
 }
