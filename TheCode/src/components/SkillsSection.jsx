@@ -7,7 +7,7 @@ const SkillsSection = () => {
   const skillCategories = [
     {
       title: 'Programming Languages',
-      skills: ['Python', 'JavaScript', 'C#', 'C++', 'C', 'SQL', 'Assembly'],
+      skills: ['Python', 'JavaScript','TypeScript' , 'C#', 'C++', 'C', 'SQL', 'Go', 'Assembly'],
     },
     {
       title: 'Frontend',
@@ -15,15 +15,15 @@ const SkillsSection = () => {
     },
     {
       title: 'Backend & Frameworks',
-      skills: ['Flask', 'ASP.NET', '.NET Framework', 'ASP.NET Razor'],
+      skills: ['Next.js', 'Node.js', 'Express.js', 'Flask', 'ASP.NET', '.NET Framework', 'ASP.NET Razor'],
     },
     {
       title: 'Databases',
-      skills: ['Microsoft SQL Server', 'Databases'],
+      skills: ['MongoDB', 'Microsoft SQL Server', 'Databases'],
     },
     {
       title: 'DevOps & Tools',
-      skills: ['Docker', 'Git', 'GitHub', 'AWS', 'VMware', 'Linux', 'Kali Linux'],
+      skills: ['Docker', 'Git', 'GitHub', 'AWS', 'VMware', 'Linux', 'Kali Linux', 'Visual Studio', 'Visual Studio Code', 'Version Control', 'Vercel', 'Netlify'],
     },
     {
       title: 'AI & Data',
