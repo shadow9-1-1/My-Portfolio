@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import IntroAnimation from './components/IntroAnimation'
 import { HomePage, AboutPage, ProjectsPage, ContactPage, ErrorPage } from './pages'
 import { ThemeProvider } from './context/ThemeContext'
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const [showIntro, setShowIntro] = useState(false);
@@ -46,6 +47,7 @@ function App() {
           </main>
           <Footer />
         </div>
+        <Analytics />
       </Router>
     </ThemeProvider>
   )
