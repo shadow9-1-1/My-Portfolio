@@ -48,28 +48,45 @@ const ProjectsSection = () => {
     liveUrl: '#',
     githubUrl: 'https://github.com/shadow9-1-1/Advanced-Driver-Assistance-Systems'
   },
-  
   {
-    title: 'Machine Learning Project',
-    description: 'this is part of CSAI 253 course (Machine Learning) at zewail city',
-    fullDescription: 'A comprehensive machine learning project featuring a complete ML pipeline including data preprocessing, exploratory data analysis, feature engineering, and model training. The project implements multiple classification algorithms including Decision Tree, Random Forest, K-Nearest Neighbors, SVM, Logistic Regression, and XGBoost with hyperparameter tuning and cross-validation for optimal performance.',
-    tags: ['Python', 'Jupyter Notebook', 'Machine Learning', 'Scikit-learn', 'XGBoost', 'MIT License'],
-    images: ['Data Visualizations', 'Model Comparison', 'ROC Curves', 'Confusion Matrices'],
+    title: 'Hybrid Ephemeral Messenger',
+    description: 'A high-security, real-time terminal-styled chat application where messages self-destruct by design.',
+    fullDescription: 'HE-Messenger is a privacy-first, ephemeral messaging platform where messages exist only in memory (Redis) with a strict Time-to-Live. It features real-time sync with Socket.IO, secure authentication using Firebase, and a minimal terminal aesthetic.',
+    tags: ['Node.js', 'Express', 'Next.js', 'Redis', 'MongoDB', 'Firebase', 'Socket.IO'],
+    images: ['Chat UI', 'Terminal View', 'System Pulse Monitor'],
     features: [
-      'Complete data preprocessing pipeline',
-      'Exploratory data analysis with visualizations',
-      'Feature engineering and encoding',
-      'Multiple ML model implementation',
-      'Hyperparameter tuning with GridSearch',
-      'Cross-validation and model evaluation',
-      'ROC curves and confusion matrices',
-      'Performance metrics comparison'
+      'Zero persistence: Messages exist only in Redis memory',
+      'Strict TTL expiration for all messages',
+      'Real-time sync with Socket.IO for presence and typing indicators',
+      'Secure identity verification with Firebase Admin SDK',
+      'Terminal-styled, high-contrast UI'
     ],
     size: 'medium',
     bgColor: 'bg-gradient-to-br from-sky-400 to-blue-500',
     liveUrl: '#',
-    githubUrl: 'https://github.com/shadow9-1-1/Machine-Learning-Project'
+    githubUrl: 'https://github.com/shadow9-1-1/HE-Messenger'
   },
+  // {
+  //   title: 'Machine Learning Project',
+  //   description: 'this is part of CSAI 253 course (Machine Learning) at zewail city',
+  //   fullDescription: 'A comprehensive machine learning project featuring a complete ML pipeline including data preprocessing, exploratory data analysis, feature engineering, and model training. The project implements multiple classification algorithms including Decision Tree, Random Forest, K-Nearest Neighbors, SVM, Logistic Regression, and XGBoost with hyperparameter tuning and cross-validation for optimal performance.',
+  //   tags: ['Python', 'Jupyter Notebook', 'Machine Learning', 'Scikit-learn', 'XGBoost', 'MIT License'],
+  //   images: ['Data Visualizations', 'Model Comparison', 'ROC Curves', 'Confusion Matrices'],
+  //   features: [
+  //     'Complete data preprocessing pipeline',
+  //     'Exploratory data analysis with visualizations',
+  //     'Feature engineering and encoding',
+  //     'Multiple ML model implementation',
+  //     'Hyperparameter tuning with GridSearch',
+  //     'Cross-validation and model evaluation',
+  //     'ROC curves and confusion matrices',
+  //     'Performance metrics comparison'
+  //   ],
+  //   size: 'medium',
+  //   bgColor: 'bg-gradient-to-br from-sky-400 to-blue-500',
+  //   liveUrl: '#',
+  //   githubUrl: 'https://github.com/shadow9-1-1/Machine-Learning-Project'
+  // },
   {
     title: 'Next Scene',
     description: 'Movie discovery app with trending films and watchlists',
@@ -91,48 +108,64 @@ const ProjectsSection = () => {
     githubUrl: 'https://github.com/yehiahesham2938/Next-Scene',
   },
   {
-    title: 'Chapter Find - Online Bookstore',
-    description: 'Chapter Find is an online bookstore designed for book lovers, offering curated book selections, personalized recommendations, and in-depth author profiles. Built with .NET Core, it delivers a secure, user-friendly experience that recreates the joy of bookstore browsing in an online community setting.',
-    fullDescription: 'A feature-rich online bookstore platform that brings the traditional bookstore experience to the digital world. Chapter Find offers book lovers a curated selection of titles with personalized recommendations, detailed author profiles, and a secure shopping experience. Built with .NET Core and modern web technologies, the platform provides comprehensive book browsing, advanced search capabilities, user reviews, and a seamless checkout process with secure payment integration.',
-    tags: ['C#', '.NET Core', 'JavaScript', 'CSS', 'HTML', 'SQL', 'MIT License'],
-    images: ['Homepage', 'Book Catalog', 'Author Profiles', 'Shopping Cart', 'User Dashboard'],
+    title: 'ClipS - Short-Video Social Platform',
+    description: 'A high-performance, full-stack short-video social platform for modern content creation and consumption.',
+    fullDescription: 'ClipS is a production-ready short-video social platform built with modern web technologies. It provides a complete ecosystem for users to create, share, discover, and interact with short-form video content, featuring video processing, cloud storage, real-time notifications, and integrated payments.',
+    tags: ['Node.js', 'Express', 'MongoDB', 'React', 'Next.js', 'Docker'],
+    images: ['Homepage', 'Video Feed', 'Upload Interface', 'Admin Dashboard'],
     features: [
-      'Curated book selection and catalog',
-      'Personalized book recommendations',
-      'In-depth author profiles',
-      'Advanced search and filtering',
-      'User authentication and profiles',
-      'Shopping cart and checkout',
-      'User reviews and ratings',
-      'Secure payment processing',
-      'Order history and tracking'
+      'Video upload, transcoding, and cloud storage (AWS S3)',
+      'Social interactions (likes, comments, follows)',
+      'Real-time notifications with Socket.io',
+      'Stripe integration for payments',
+      'Advanced search and discovery',
+      'Comprehensive admin dashboard'
     ],
     size: 'wide',
     bgColor: 'bg-gradient-to-br from-amber-500 to-orange-400',
     liveUrl: '#',
-    githubUrl: 'https://github.com/shadow9-1-1/Chapter-Find-Online-Bookstore'
+    githubUrl: 'https://github.com/shadow9-1-1/ClipS'
   },
+  // {
+  //   title: 'Hotel Management System',
+  //   description: "This project is a web development initiative aimed at creating a dynamic and user-friendly website for a hotel. The website is designed to serve the hotel's business goals, enhance user experience, and facilitate efficient hotel management.",
+  //   fullDescription: "A comprehensive hotel management platform featuring three distinct user roles (Guest, Employee, Admin) with complete booking management, room reservation system, feedback collection, and administrative controls. The system includes guest profiles with reservation history, employee management tools, and admin capabilities for adding managers, staff, room types, and services. Built with modern web technologies and a robust database architecture.",
+  //   tags: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'SQL', 'MIT License'],
+  //   images: ['Homepage', 'Room Catalog', 'Reservation System', 'Admin Dashboard', 'User Profile'],
+  //   features: [
+  //     'Multi-role user system (Guest/Employee/Admin)',
+  //     'Room browsing and booking',
+  //     'Real-time reservation management',
+  //     'Guest feedback system',
+  //     'User profile and reservation history',
+  //     'Employee management tools',
+  //     'Admin dashboard with analytics',
+  //     'Service and room type management',
+  //     'Secure authentication system'
+  //   ],
+  //   size: 'medium',
+  //   bgColor: 'bg-gradient-to-br from-pink-400 to-rose-500',
+  //   liveUrl: '#',
+  //   githubUrl: 'https://github.com/shadow9-1-1/Hotel-project'
+  // },
   {
-    title: 'Hotel Management System',
-    description: "This project is a web development initiative aimed at creating a dynamic and user-friendly website for a hotel. The website is designed to serve the hotel's business goals, enhance user experience, and facilitate efficient hotel management.",
-    fullDescription: "A comprehensive hotel management platform featuring three distinct user roles (Guest, Employee, Admin) with complete booking management, room reservation system, feedback collection, and administrative controls. The system includes guest profiles with reservation history, employee management tools, and admin capabilities for adding managers, staff, room types, and services. Built with modern web technologies and a robust database architecture.",
-    tags: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'SQL', 'MIT License'],
-    images: ['Homepage', 'Room Catalog', 'Reservation System', 'Admin Dashboard', 'User Profile'],
+    title: 'Auto Rentals - Microservices Platform',
+    description: 'A scalable microservices-based auto rentals platform for a software architecture course project.',
+    fullDescription: 'A scalable microservices-based Auto Rentals platform using Express.js, Next.js, MongoDB, Redis, and Kafka. The architecture includes an API Gateway, independent backend services, and asynchronous event-driven communication, designed for resilience and observability.',
+    tags: ['Node.js', 'Express', 'Next.js', 'MongoDB', 'Kafka', 'Docker'],
+    images: ['Architecture Diagram', 'Service Structure', 'Frontend Mockup'],
     features: [
-      'Multi-role user system (Guest/Employee/Admin)',
-      'Room browsing and booking',
-      'Real-time reservation management',
-      'Guest feedback system',
-      'User profile and reservation history',
-      'Employee management tools',
-      'Admin dashboard with analytics',
-      'Service and room type management',
-      'Secure authentication system'
+      'Microservices architecture with independent backend services',
+      'API Gateway for routing, authentication, and rate limiting',
+      'Asynchronous communication with Apache Kafka',
+      'Containerized deployment with Docker and Docker Compose',
+      'Monitoring with Prometheus and Grafana',
+      'Clean architecture principles'
     ],
     size: 'medium',
     bgColor: 'bg-gradient-to-br from-pink-400 to-rose-500',
     liveUrl: '#',
-    githubUrl: 'https://github.com/shadow9-1-1/Hotel-project'
+    githubUrl: 'https://github.com/shadow9-1-1/Auto-Rentals'
   },
   {
     title: 'Events Planner Platform',

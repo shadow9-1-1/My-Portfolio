@@ -186,6 +186,80 @@ const ProjectsPage = () => {
     liveUrl: '#',
     githubUrl: 'https://github.com/shadow9-1-1/Events-Project-DB',
   },
+  {
+    title: 'ClipS - Short-Video Social Platform',
+    description: 'A high-performance, full-stack short-video social platform for modern content creation and consumption.',
+    fullDescription: 'ClipS is a production-ready short-video social platform built with modern web technologies. It provides a complete ecosystem for users to create, share, discover, and interact with short-form video content, featuring video processing, cloud storage, real-time notifications, and integrated payments.',
+    tags: ['Node.js', 'Express', 'MongoDB', 'React', 'Next.js', 'Docker'],
+    images: ['Homepage', 'Video Feed', 'Upload Interface', 'Admin Dashboard'],
+    features: [
+      'Video upload, transcoding, and cloud storage (AWS S3)',
+      'Social interactions (likes, comments, follows)',
+      'Real-time notifications with Socket.io',
+      'Stripe integration for payments',
+      'Advanced search and discovery',
+      'Comprehensive admin dashboard'
+    ],
+    bgColor: 'bg-gradient-to-br from-red-100 to-red-200',
+    textColor: 'text-red-400',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/shadow9-1-1/ClipS'
+  },
+  {
+    title: 'HE-Messenger - Hybrid Ephemeral Messenger',
+    description: 'A high-security, real-time terminal-styled chat application where messages self-destruct by design.',
+    fullDescription: 'HE-Messenger is a privacy-first, ephemeral messaging platform where messages exist only in memory (Redis) with a strict Time-to-Live. It features real-time sync with Socket.IO, secure authentication using Firebase, and a minimal terminal aesthetic.',
+    tags: ['Node.js', 'Express', 'Next.js', 'Redis', 'MongoDB', 'Firebase', 'Socket.IO'],
+    images: ['Chat UI', 'Terminal View', 'System Pulse Monitor'],
+    features: [
+      'Zero persistence: Messages exist only in Redis memory',
+      'Strict TTL expiration for all messages',
+      'Real-time sync with Socket.IO for presence and typing indicators',
+      'Secure identity verification with Firebase Admin SDK',
+      'Terminal-styled, high-contrast UI'
+    ],
+    bgColor: 'bg-gradient-to-br from-gray-100 to-gray-200',
+    textColor: 'text-gray-400',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/shadow9-1-1/HE-Messenger'
+  },
+  {
+    title: 'TSMS - Teacher & Student Management System',
+    description: 'A role-based management system for educational institutions, built with Flask.',
+    fullDescription: 'TSMS is a Teachers and Students Management System built with Flask. It provides role-based dashboards and workflows for administrators, supervisors, teachers, and students, featuring planning modules, authentication, and localization for English and Arabic.',
+    tags: ['Python', 'Flask', 'SQLAlchemy', 'Jinja2', 'i18n'],
+    images: ['Dashboard', 'User Roles', 'Planning Module', 'Localization'],
+    features: [
+      'Role-based access control (Admin, Supervisor, Teacher)',
+      'Teacher and student management',
+      'Planning module for student plans, tasks, and progress tracking',
+      'Authentication and profile management',
+      'English and Arabic localization with RTL support'
+    ],
+    bgColor: 'bg-gradient-to-br from-cyan-100 to-cyan-200',
+    textColor: 'text-cyan-400',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/shadow9-1-1/TSMS'
+  },
+  {
+    title: 'Auto Rentals - Microservices Platform',
+    description: 'A scalable microservices-based auto rentals platform for a software architecture course project.',
+    fullDescription: 'A scalable microservices-based Auto Rentals platform using Express.js, Next.js, MongoDB, Redis, and Kafka. The architecture includes an API Gateway, independent backend services, and asynchronous event-driven communication, designed for resilience and observability.',
+    tags: ['Node.js', 'Express', 'Next.js', 'MongoDB', 'Kafka', 'Docker'],
+    images: ['Architecture Diagram', 'Service Structure', 'Frontend Mockup'],
+    features: [
+      'Microservices architecture with independent backend services',
+      'API Gateway for routing, authentication, and rate limiting',
+      'Asynchronous communication with Apache Kafka',
+      'Containerized deployment with Docker and Docker Compose',
+      'Monitoring with Prometheus and Grafana',
+      'Clean architecture principles'
+    ],
+    bgColor: 'bg-gradient-to-br from-yellow-100 to-yellow-200',
+    textColor: 'text-yellow-400',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/shadow9-1-1/Auto-Rentals'
+  },
 ]
   // const moreProjects = [
   //   {
