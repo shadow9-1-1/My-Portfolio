@@ -20,8 +20,8 @@ const HeroSection = () => {
   ];
   
   const heroImages = [
-    'hero2.png',
     'hero1.png',
+    'hero2.png',
     'hero3.png',
   ];
 
