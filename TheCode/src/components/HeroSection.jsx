@@ -115,7 +115,7 @@ const HeroSection = () => {
             {heroImages.map((img, idx) => (
               <img 
                 key={img}
-                className={`absolute inset-0 w-full h-full transition-all duration-700 ease-in-out ${
+                className={`absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-in-out ${
                   idx === currentSlide 
                     ? 'opacity-100 scale-100' 
                     : 'opacity-0 scale-105'
