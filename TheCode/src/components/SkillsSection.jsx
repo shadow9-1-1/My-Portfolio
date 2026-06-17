@@ -23,11 +23,11 @@ const SkillsSection = () => {
     },
     {
       title: 'DevOps & Tools',
-      skills: ['Docker', 'Git', 'GitHub', 'AWS', 'VMware', 'Linux', 'Kali Linux', 'Visual Studio', 'Visual Studio Code', 'Version Control', 'Vercel', 'Netlify'],
+      skills: ['Docker', 'Git', 'GitHub', 'AWS', 'VMware', 'Linux', 'Kali Linux', 'Visual Studio', 'Visual Studio Code', 'Version Control', 'Vercel', 'Netlify', 'CI/CD', 'kafka', 'Redis'],
     },
     {
       title: 'AI & Data',
-      skills: ['Machine Learning', 'Artificial Intelligence', 'Kaggle'],
+      skills: ['Machine Learning', 'Artificial Intelligence', 'Kaggle', 'google colab'],
     },
     {
       title: 'Hardware & Systems',
